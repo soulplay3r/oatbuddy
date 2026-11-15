@@ -28,7 +28,7 @@ export const upcomingDrops: UpcomingDrop[] = [
   {
     drop: "Drop 03",
     hint: "Between-meal, rethought.",
-    teaser: "For the hours between meals. Designed with the same care as breakfast."
+    teaser: "For the hours between meals. Designed with the same care as breakfast.",
     revealed: false,
     glow: ["#C34AD6", "#7437E8"],
     shape: "bar",
