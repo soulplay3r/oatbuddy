@@ -60,6 +60,4 @@ export const storyContent = {
       body: "Over time, Mito.living will grow into a broader range of everyday wellness essentials — each one designed to help you make more of every day.",
     },
   ],
-  /** Optional founder note. Leave null until a real note is written. */
-  founderNote: null as string | null,
 };

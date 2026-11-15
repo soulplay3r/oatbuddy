@@ -26,6 +26,13 @@ export const siteConfig = {
     badge: { value: "39g", label: "Protein" },
   },
 
+  /**
+   * Homepage trust highlights (hero badges + trust strip).
+   * "Doctor Recommended" is an endorsement claim: keep documented proof
+   * (who recommends it, and on what basis) before publishing, or set it to false.
+   */
+  doctorRecommended: true,
+
   /** Short line shown under the logo in the footer and in metadata. */
   tagline: "Science-led wellness essentials designed to help you make more of every day.",
 

@@ -60,14 +60,19 @@ export function ReviewSection() {
           : [0, 1, 2].map((i) => (
               <li
                 key={i}
-                className="relative flex aspect-[4/5] flex-col items-center justify-center gap-3 overflow-hidden rounded-[1.75rem] bg-white p-6 text-center ring-1 ring-line"
+                className="relative flex aspect-[4/5] flex-col items-center justify-center gap-3 overflow-hidden rounded-[1.75rem] bg-navy p-6 text-center text-ivory"
               >
-                {i === 0 ? <Quote className="absolute left-6 top-6 size-8 text-magenta-soft" aria-hidden /> : null}
-                <span className="grid size-14 place-items-center rounded-full bg-navy-soft text-navy">
-                  <Play className="size-6 translate-x-0.5" aria-hidden />
+                <span
+                  className="pointer-events-none absolute inset-0"
+                  style={{ backgroundImage: `radial-gradient(circle at ${[30, 60, 45][i]}% ${[30, 70, 40][i]}%, ${["rgb(255 120 62 / 0.55)", "rgb(195 74 214 / 0.55)", "rgb(76 77 235 / 0.6)"][i]}, transparent 60%)` }}
+                  aria-hidden
+                />
+                {i === 0 ? <Quote className="absolute left-6 top-6 size-8 text-white/30" aria-hidden /> : null}
+                <span className="relative grid size-16 place-items-center rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur">
+                  <Play className="size-7 translate-x-0.5" aria-hidden />
                 </span>
-                <p className="font-display text-lg font-semibold text-navy">Video story coming soon</p>
-                <p className="max-w-[14rem] text-sm text-muted">Real customers, sharing their routines — once our first bottles are out.</p>
+                <p className="relative font-display text-lg font-semibold">Video story coming soon</p>
+                <p className="relative max-w-[14rem] text-sm text-ivory/70">Real customers, sharing their routines — once our first bottles are out.</p>
               </li>
             ))}
       </ul>

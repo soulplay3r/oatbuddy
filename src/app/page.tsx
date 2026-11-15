@@ -8,6 +8,7 @@ import { JournalSection } from "@/components/JournalSection";
 import { ProductGrid } from "@/components/ProductGrid";
 import { ReviewSection } from "@/components/ReviewSection";
 import { SectionHeading } from "@/components/SectionHeading";
+import { TrustStrip } from "@/components/TrustStrip";
 import { WhyMito } from "@/components/WhyMito";
 import { products } from "@/data/products";
 import { siteConfig } from "@/data/site-config";
@@ -22,6 +23,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustStrip />
 
       <section id="flavours" className="container-page py-16 md:py-24" aria-labelledby="flavours-title">
         <SectionHeading

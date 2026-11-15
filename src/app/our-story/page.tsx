@@ -6,7 +6,7 @@ import { BottleArt } from "@/components/art/BottleArt";
 import { TrioArt } from "@/components/art/TrioArt";
 import { EnergyGlow } from "@/components/brand/EnergyGlow";
 import { storyContent } from "@/data/content";
-import { advisors, credentials, founders, type Person } from "@/data/team";
+import { advisors, credentials, type Person } from "@/data/team";
 import { PlaceholderNote } from "@/components/PlaceholderNote";
 import { BadgeCheck, UserRound } from "lucide-react";
 import { products } from "@/data/products";
@@ -14,14 +14,14 @@ import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Story",
-  description: `The story behind ${siteConfig.brandName}: the people, the expertise and why we started.`,
+  description: `The story behind ${siteConfig.brandName}: why we started, the expertise behind our products and the credentials you can verify.`,
   path: "/our-story",
 });
 
 const sectionTints = ["bg-coral-soft", "bg-magenta-soft", "bg-violet-soft", "bg-navy-soft"];
 
 export default function OurStoryPage() {
-  const { intro, sections, founderNote } = storyContent;
+  const { intro, sections } = storyContent;
   return (
     <>
       <section className="container-page grid items-center gap-10 py-12 md:py-20 lg:grid-cols-2">
@@ -53,12 +53,9 @@ export default function OurStoryPage() {
         </ol>
       </section>
 
-      <section className="container-page pb-16 md:pb-24" aria-labelledby="founders-title">
-        <p className="eyebrow text-magenta-deep">The people</p>
-        <h2 id="founders-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">Founders</h2>
-        <PeopleGrid people={founders} placeholder="Founder profiles are coming soon." hint="add founders in src/data/team.ts" />
-
-        <h2 className="mt-16 text-3xl font-bold text-navy sm:text-4xl">Expertise</h2>
+      <section className="container-page pb-16 md:pb-24" aria-labelledby="expertise-title">
+        <p className="eyebrow text-magenta-deep">Behind the science</p>
+        <h2 id="expertise-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">Expertise</h2>
         <p className="mt-3 max-w-2xl text-lg text-muted">The nutrition and food-science experts who advise on our formulations.</p>
         <PeopleGrid people={advisors} placeholder="Advisor profiles are coming soon." hint="add advisors in src/data/team.ts" />
 
@@ -83,11 +80,6 @@ export default function OurStoryPage() {
         )}
       </section>
 
-      {founderNote ? (
-        <section className="container-page pb-16">
-          <blockquote className="mx-auto max-w-2xl text-center font-display text-2xl text-navy">&ldquo;{founderNote}&rdquo;</blockquote>
-        </section>
-      ) : null}
 
       <section className="container-page pb-16 md:pb-24">
         <div className="relative grid items-center gap-8 overflow-hidden rounded-[2.5rem] bg-navy p-8 text-ivory sm:p-12 md:grid-cols-[1fr_auto]">
