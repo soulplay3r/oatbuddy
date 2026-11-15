@@ -4,17 +4,14 @@ import { siteConfig } from "@/data/site-config";
 
 /**
  * Original illustrated concept of the bottle format:
- * clear cylindrical bottle · black screw cap · front paper label ·
- * layered oats and toppings visible through the bottle.
+ * compact PET bottle with rounded shoulders · black ridged screw cap ·
+ * white wraparound label with a flavour-colour corner tab · a speckled
+ * dry oat mix visible through the plastic above and below the label.
  *
  * This is a CONCEPT ILLUSTRATION, not a product photograph.
  * Replace with real photography via `images[].src` in products.ts.
  */
 
-const OAT_LIGHT = "#F1E2C2";
-const OAT_BASE = "#E6CF9F";
-const OAT_FLAKE = "#D6B680";
-const OAT_FLAKE_LIGHT = "#F8EEDA";
 const NAVY = "#080B32";
 const CREAM = "#F5F1EB";
 const INK = "#080B32";
@@ -88,12 +85,12 @@ export function Topping({
   );
 }
 
-function FlavourMotif({ kind, x, y, ink }: { kind: FlavourTheme["topping"]; x: number; y: number; ink: string }) {
+export function FlavourMotif({ kind, x, y, ink, scale = 1 }: { kind: FlavourTheme["topping"]; x: number; y: number; ink: string; scale?: number }) {
   // Simple line-art motif printed on the label.
-  const common = { fill: "none", stroke: ink, strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const common = { fill: "none", stroke: ink, strokeWidth: 1.6 / Math.sqrt(scale), strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   if (kind === "mango") {
     return (
-      <g transform={`translate(${x} ${y})`}>
+      <g transform={`translate(${x} ${y}) scale(${scale})`}>
         <path d="M-6,4 C-9,-4 -2,-9 4,-7 C10,-5 9,4 3,7 C-1,9 -4,8 -6,4Z" {...common} />
         <path d="M2,-7 C3,-10 6,-11 8,-10" {...common} />
       </g>
@@ -101,14 +98,14 @@ function FlavourMotif({ kind, x, y, ink }: { kind: FlavourTheme["topping"]; x: n
   }
   if (kind === "strawberry") {
     return (
-      <g transform={`translate(${x} ${y})`}>
+      <g transform={`translate(${x} ${y}) scale(${scale})`}>
         <path d="M0,-5 C5,-8 10,-3 7,3 C5,7 2,9 0,10 C-2,9 -5,7 -7,3 C-10,-3 -5,-8 0,-5Z" {...common} />
         <path d="M-3,-7 L0,-5 L3,-7" {...common} />
       </g>
     );
   }
   return (
-    <g transform={`translate(${x} ${y})`}>
+    <g transform={`translate(${x} ${y}) scale(${scale})`}>
       <rect x={-7} y={-6} width={14} height={12} rx={2} {...common} />
       <path d="M-7,-1 H7 M0,-6 V6" {...common} />
     </g>
@@ -116,6 +113,26 @@ function FlavourMotif({ kind, x, y, ink }: { kind: FlavourTheme["topping"]; x: n
 }
 
 /* ─────────────── Bottle ─────────────── */
+
+/** Colours of the dry oat mix seen through the bottle, per flavour. */
+const MIX: Record<FlavourTheme["topping"], { base: string; specks: string[]; flakes: string[] }> = {
+  mango: { base: "#E9D9B4", specks: ["#F2B53A", "#E8962A", "#F7CF6A"], flakes: ["#F6ECD6", "#D9C08E"] },
+  strawberry: { base: "#E8D8C6", specks: ["#D9445F", "#B8314F", "#EE8197"], flakes: ["#F6ECDE", "#D6BFA2"] },
+  chocolate: { base: "#8C624A", specks: ["#4E2F21", "#3A2218", "#B98B6C"], flakes: ["#C9A585", "#A47A5E"] },
+};
+
+/** Bottle silhouette: short neck, rounded shoulders, straight body. */
+const BODY =
+  "M50,84 H150 C150,100 174,102 174,126 V364 Q174,388 150,388 H50 Q26,388 26,364 V126 C26,102 50,100 50,84 Z";
+
+/** Simplified M ribbon, white, for the label's corner tab. */
+function TabMark({ x, y, s }: { x: number; y: number; s: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`} fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 80 V27 L50 60 L79 25 M79 31 V80" />
+    </g>
+  );
+}
 
 export interface BottleArtProps {
   theme: FlavourTheme;
@@ -138,32 +155,29 @@ export function BottleArt({
 }: BottleArtProps) {
   const uid = useId().replace(/:/g, "");
   const rand = seeded(productName);
-  const ink = labelInk(theme.accent);
+  const mix = MIX[theme.topping];
+  const r2 = (n: number) => Math.round(n * 100) / 100;
 
-  const [line1, ...rest] = productName.toUpperCase().split(" ");
-  const line2 = rest.join(" ");
-  const fit = (word: string) => Math.min(30, 124 / (Math.max(word.length, 1) * 0.64));
+  const words = productName.split(" ");
+  const line1 = words[0];
+  const line2 = words.slice(1).join(" ");
 
-  // Oat flakes scattered through the visible layers.
-  const flakes = Array.from({ length: 70 }, (_, i) => {
-    const band = i % 3;
-    const y = band === 0 ? 120 + rand() * 40 : band === 1 ? 322 + rand() * 60 : 150 + rand() * 20;
-    return {
-      x: 34 + rand() * 132,
-      y,
-      rx: 3 + rand() * 3,
-      ry: 1.6 + rand() * 1.4,
-      r: rand() * 180,
-      light: rand() > 0.55,
-    };
-  });
-
-  const toppings = Array.from({ length: 11 }, (_, i) => ({
-    x: 40 + i * 12.5 + (rand() - 0.5) * 6,
-    y: 108 + rand() * 10,
-    r: (rand() - 0.5) * 70,
-    s: 0.85 + rand() * 0.3,
+  // Speckled dry mix: specks of flavour pieces and pale oat flakes.
+  const specks = Array.from({ length: 230 }, () => ({
+    x: r2(28 + rand() * 144),
+    y: r2(90 + rand() * 298),
+    r: r2(0.9 + rand() * 1.9),
+    c: mix.specks[Math.floor(rand() * mix.specks.length)],
   }));
+  const flakes = Array.from({ length: 120 }, () => ({
+    x: r2(28 + rand() * 144),
+    y: r2(90 + rand() * 298),
+    rx: r2(2.2 + rand() * 2.4),
+    rot: r2(rand() * 180),
+    c: mix.flakes[Math.floor(rand() * mix.flakes.length)],
+  }));
+
+  const { name, suffix } = siteConfig.wordmark;
 
   return (
     <svg
@@ -175,138 +189,108 @@ export function BottleArt({
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <clipPath id={`inner-${uid}`}>
-          <rect x={30} y={74} width={140} height={310} rx={24} />
+        <clipPath id={`body-${uid}`}>
+          <path d={BODY} />
         </clipPath>
         <linearGradient id={`glass-${uid}`} x1="0" x2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity="0.5" />
-          <stop offset="0.18" stopColor="#fff" stopOpacity="0.08" />
-          <stop offset="0.75" stopColor="#fff" stopOpacity="0.02" />
-          <stop offset="1" stopColor="#fff" stopOpacity="0.35" />
+          <stop offset="0" stopColor="#fff" stopOpacity="0.45" />
+          <stop offset="0.16" stopColor="#fff" stopOpacity="0.06" />
+          <stop offset="0.78" stopColor="#000" stopOpacity="0.04" />
+          <stop offset="1" stopColor="#000" stopOpacity="0.16" />
         </linearGradient>
         <linearGradient id={`curve-${uid}`} x1="0" x2="1">
-          <stop offset="0" stopColor="#000" stopOpacity="0.18" />
-          <stop offset="0.14" stopColor="#000" stopOpacity="0" />
-          <stop offset="0.32" stopColor="#fff" stopOpacity="0.16" />
-          <stop offset="0.5" stopColor="#fff" stopOpacity="0" />
+          <stop offset="0" stopColor="#000" stopOpacity="0.16" />
+          <stop offset="0.12" stopColor="#000" stopOpacity="0" />
+          <stop offset="0.3" stopColor="#fff" stopOpacity="0.5" />
+          <stop offset="0.45" stopColor="#fff" stopOpacity="0" />
           <stop offset="0.86" stopColor="#000" stopOpacity="0" />
           <stop offset="1" stopColor="#000" stopOpacity="0.2" />
         </linearGradient>
         <linearGradient id={`cap-${uid}`} x1="0" x2="1">
-          <stop offset="0" stopColor="#111" />
-          <stop offset="0.25" stopColor="#3a3a3a" />
-          <stop offset="0.5" stopColor="#1d1d1d" />
-          <stop offset="1" stopColor="#0d0d0d" />
+          <stop offset="0" stopColor="#0c0c0c" />
+          <stop offset="0.22" stopColor="#3a3a3a" />
+          <stop offset="0.5" stopColor="#1b1b1b" />
+          <stop offset="1" stopColor="#090909" />
         </linearGradient>
       </defs>
 
       {title ? <title>{title}</title> : null}
 
-      {shadow ? <ellipse cx={100} cy={392} rx={80} ry={7} fill="#3b2a1a" opacity={0.16} /> : null}
+      {shadow ? <ellipse cx={100} cy={391} rx={82} ry={7} fill="#1a1530" opacity={0.18} /> : null}
 
-      {/* Bottle back wall */}
-      <rect x={26} y={70} width={148} height={318} rx={28} fill="#FBF7F0" opacity={0.55} />
-
-      {/* Contents */}
-      <g clipPath={`url(#inner-${uid})`}>
-        {/* oat base */}
-        <rect x={20} y={150} width={160} height={240} fill={OAT_BASE} />
-        {/* flavour streak below label */}
-        <path d="M20,340 C55,328 80,352 110,338 C140,326 160,344 180,334 L180,350 C150,360 130,342 100,356 C70,368 45,348 20,358Z" fill={theme.fill} opacity={0.55} />
-        {/* flavour layer */}
-        <path d="M20,150 C50,140 75,160 100,148 C130,136 155,156 180,146 L180,200 L20,200Z" fill={theme.fill} />
-        {/* creamy top oats */}
-        <path d="M20,118 C50,112 70,126 100,118 C130,110 150,124 180,116 L180,152 C155,160 130,142 100,154 C72,164 48,144 20,154Z" fill={OAT_LIGHT} />
+      {/* Contents: speckled dry oat mix, filled to the shoulder */}
+      <g clipPath={`url(#body-${uid})`}>
+        <rect x={20} y={80} width={160} height={312} fill="#F7F4EE" />
+        <path d="M20,96 C50,90 70,99 100,93 C130,88 150,97 180,92 V392 H20Z" fill={mix.base} />
         {flakes.map((f, i) => (
-          <ellipse
-            key={i}
-            cx={f.x}
-            cy={f.y}
-            rx={f.rx}
-            ry={f.ry}
-            transform={`rotate(${f.r} ${f.x} ${f.y})`}
-            fill={f.light ? OAT_FLAKE_LIGHT : OAT_FLAKE}
-            opacity={0.9}
-          />
+          <ellipse key={`f${i}`} cx={f.x} cy={f.y} rx={f.rx} ry={f.rx * 0.55} transform={`rotate(${f.rot} ${f.x} ${f.y})`} fill={f.c} />
         ))}
-        {toppings.map((t, i) => (
-          <Topping key={i} kind={theme.topping} x={t.x} y={t.y} r={t.r} s={t.s} />
+        {specks.map((d, i) => (
+          <circle key={`s${i}`} cx={d.x} cy={d.y} r={d.r} fill={d.c} />
         ))}
       </g>
 
-      {/* Glass */}
-      <rect x={26} y={70} width={148} height={318} rx={28} fill={`url(#glass-${uid})`} stroke="#D9CFBF" strokeWidth={1.5} />
-      <rect x={37} y={86} width={7} height={286} rx={3.5} fill="#fff" opacity={0.6} />
-      <rect x={157} y={100} width={3.5} height={250} rx={1.75} fill="#fff" opacity={0.35} />
+      {/* Plastic */}
+      <path d={BODY} fill={`url(#glass-${uid})`} stroke="#D3CCC0" strokeWidth={1.4} />
+      <rect x={34} y={120} width={6} height={250} rx={3} fill="#fff" opacity={0.55} />
+      <path d="M44,104 C46,96 52,92 58,90" fill="none" stroke="#fff" strokeWidth={3} strokeLinecap="round" opacity={0.6} />
+      <rect x={160} y={132} width={3} height={220} rx={1.5} fill="#fff" opacity={0.3} />
 
-      {/* Paper label */}
+      {/* White wraparound label */}
       <g>
-        <rect x={26} y={172} width={148} height={146} fill={theme.accent} />
-        <text
-          x={100}
-          y={197}
-          textAnchor="middle"
-          fontSize={9}
-          fontWeight={700}
-          letterSpacing={2.4}
-          fill={ink === CREAM ? CREAM : NAVY}
-          style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}
-        >
-          {siteConfig.brandName.toUpperCase()}
+        <rect x={26} y={166} width={148} height={156} fill="#FDFBF7" />
+
+        {/* Flavour-colour corner tab with the M mark */}
+        <rect x={130} y={172} width={36} height={40} rx={5} fill={theme.accent} />
+        <TabMark x={134} y={176} s={0.28} />
+        <text x={148} y={207} textAnchor="middle" fontSize={4.6} fontWeight={700} letterSpacing={0.6} fill="#fff" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
+          OVERNIGHT
         </text>
-        <FlavourMotif kind={theme.topping} x={100} y={216} ink={ink} />
-        <text
-          x={100}
-          y={line2 ? 251 : 262}
-          textAnchor="middle"
-          fontSize={fit(line1)}
-          fontWeight={800}
-          fill={ink}
-          style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}
-        >
+
+        {/* Wordmark */}
+        <text x={36} y={224} fontSize={38} fontWeight={900} fill={theme.deep} style={{ fontFamily: "var(--font-nunito), ui-rounded, system-ui, sans-serif", letterSpacing: "-0.02em" }}>
+          {name}
+          <tspan fill="#FF783E">.</tspan>
+        </text>
+        <text x={38} y={238} fontSize={8.5} fontWeight={400} letterSpacing={3.4} fill={theme.deep} style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
+          {suffix}
+        </text>
+        <path d="M37,245 C60,243 90,246 112,243" fill="none" stroke={theme.accent} strokeWidth={1.4} strokeLinecap="round" />
+
+        <text x={37} y={258} fontSize={7.4} fontWeight={600} fill="#080B32" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
+          Overnight Oats
+        </text>
+
+        {/* Flavour name */}
+        <text x={37} y={281} fontSize={line1.length > 8 ? 13 : 15} fontWeight={700} fill={theme.deep} style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}>
           {line1}
         </text>
         {line2 ? (
-          <text
-            x={100}
-            y={251 + fit(line2) + 1}
-            textAnchor="middle"
-            fontSize={fit(line2)}
-            fontWeight={800}
-            fill={ink}
-            style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}
-          >
+          <text x={37} y={298} fontSize={line2.length > 8 ? 13 : 15} fontWeight={700} fill={theme.deep} style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}>
             {line2}
           </text>
         ) : null}
-        <rect x={56} y={290} width={88} height={17} rx={8.5} fill={ink === CREAM ? CREAM : NAVY} />
-        <text
-          x={100}
-          y={301.5}
-          textAnchor="middle"
-          fontSize={7}
-          fontWeight={700}
-          letterSpacing={1.4}
-          fill={ink === CREAM ? NAVY : CREAM}
-          style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}
-        >
-          OVERNIGHT OATS
-        </text>
-        <rect x={26} y={172} width={148} height={146} fill={`url(#curve-${uid})`} />
-        <rect x={26} y={172} width={148} height={1.2} fill="#000" opacity={0.12} />
-        <rect x={26} y={316.8} width={148} height={1.2} fill="#000" opacity={0.12} />
+
+        {/* Large line-art flavour motif */}
+        <g opacity={0.95}>
+          <FlavourMotif kind={theme.topping} x={146} y={280} ink={theme.accent} scale={2.5} />
+        </g>
+
+        <rect x={26} y={166} width={148} height={156} fill={`url(#curve-${uid})`} />
+        <rect x={26} y={166} width={148} height={1} fill="#000" opacity={0.1} />
+        <rect x={26} y={321} width={148} height={1} fill="#000" opacity={0.1} />
       </g>
 
-      {/* Neck threads */}
-      <rect x={40} y={62} width={120} height={14} rx={3} fill="#E7DFD2" opacity={0.85} />
+      {/* Neck */}
+      <rect x={52} y={70} width={96} height={18} rx={3} fill="#ECE6DC" opacity={0.9} />
 
       {/* Cap */}
-      <rect x={32} y={10} width={136} height={58} rx={10} fill={`url(#cap-${uid})`} />
-      {Array.from({ length: 21 }, (_, i) => (
-        <rect key={i} x={39 + i * 6} y={20} width={2} height={42} rx={1} fill="#000" opacity={0.35} />
+      <rect x={42} y={14} width={116} height={60} rx={9} fill={`url(#cap-${uid})`} />
+      {Array.from({ length: 18 }, (_, i) => (
+        <rect key={i} x={48.5 + i * 6} y={24} width={2} height={44} rx={1} fill="#000" opacity={0.4} />
       ))}
-      <rect x={32} y={10} width={136} height={7} rx={3.5} fill="#2c2c2c" />
-      <rect x={44} y={18} width={9} height={44} rx={4.5} fill="#fff" opacity={0.1} />
+      <rect x={42} y={14} width={116} height={7} rx={3.5} fill="#2c2c2c" />
+      <rect x={52} y={22} width={8} height={46} rx={4} fill="#fff" opacity={0.1} />
     </svg>
   );
 }
