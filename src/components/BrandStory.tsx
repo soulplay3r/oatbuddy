@@ -3,7 +3,7 @@ import { ButtonLink } from "./Button";
 import { MitoMark } from "./brand/MitoMark";
 import { EnergyGlow } from "./brand/EnergyGlow";
 
-/** Homepage brand story + science-led positioning. */
+/** Homepage brand positioning: science-led. */
 export function BrandStory() {
   return (
     <section className="container-page py-16 md:py-24" aria-labelledby="story-title">
@@ -15,7 +15,7 @@ export function BrandStory() {
           </div>
         </div>
         <div className="order-1 lg:order-2">
-          <p className="eyebrow text-magenta-deep">Our story</p>
+          <p className="eyebrow text-magenta-deep">Who we are</p>
           <h2 id="story-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">Built on evidence. Designed for everyday life.</h2>
           <p className="mt-5 text-lg text-muted">
             Mito.living makes science-led wellness essentials designed to help you make more of every day. We start from what
@@ -25,8 +25,8 @@ export function BrandStory() {
             <ButtonLink href="/our-science">
               Our Science <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
-            <ButtonLink href="/our-story" variant="secondary">
-              Our Story
+            <ButtonLink href="/shop" variant="secondary">
+              Shop Now
             </ButtonLink>
           </div>
         </div>

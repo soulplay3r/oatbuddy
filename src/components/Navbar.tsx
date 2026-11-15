@@ -12,7 +12,6 @@ const links: { href: string; label: string; highlight?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/our-science", label: "Our Science" },
-  { href: "/our-story", label: "Our Story" },
   { href: "/blog", label: "Blog" },
   { href: "/faqs", label: "FAQs" },
   { href: "/coming-soon", label: "Coming Soon", highlight: true },
