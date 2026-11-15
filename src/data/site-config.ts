@@ -17,6 +17,15 @@ export const siteConfig = {
   /** Wordmark parts: "Mito" + coral dot + "living". */
   wordmark: { name: "Mito", suffix: "living" },
 
+  /**
+   * Text printed on the bottle illustration's label.
+   * Make sure any claim here is verified before publishing.
+   */
+  packaging: {
+    tagline: "Instant & Overnight Oats",
+    badge: { value: "39g", label: "Protein" },
+  },
+
   /** Short line shown under the logo in the footer and in metadata. */
   tagline: "Science-led wellness essentials designed to help you make more of every day.",
 

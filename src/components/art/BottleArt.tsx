@@ -125,15 +125,6 @@ const MIX: Record<FlavourTheme["topping"], { base: string; specks: string[]; fla
 const BODY =
   "M50,84 H150 C150,100 174,102 174,126 V364 Q174,388 150,388 H50 Q26,388 26,364 V126 C26,102 50,100 50,84 Z";
 
-/** Simplified M ribbon, white, for the label's corner tab. */
-function TabMark({ x, y, s }: { x: number; y: number; s: number }) {
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} fill="none" stroke="#fff" strokeWidth={15} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 80 V27 L50 60 L79 25 M79 31 V80" />
-    </g>
-  );
-}
-
 export interface BottleArtProps {
   theme: FlavourTheme;
   productName: string;
@@ -178,6 +169,7 @@ export function BottleArt({
   }));
 
   const { name, suffix } = siteConfig.wordmark;
+  const { packaging } = siteConfig;
 
   return (
     <svg
@@ -240,11 +232,13 @@ export function BottleArt({
       <g>
         <rect x={26} y={166} width={148} height={156} fill="#FDFBF7" />
 
-        {/* Flavour-colour corner tab with the M mark */}
+        {/* Flavour-colour corner tab with the badge claim */}
         <rect x={130} y={172} width={36} height={40} rx={5} fill={theme.accent} />
-        <TabMark x={134} y={176} s={0.28} />
-        <text x={148} y={207} textAnchor="middle" fontSize={4.6} fontWeight={700} letterSpacing={0.6} fill="#fff" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
-          OVERNIGHT
+        <text x={148} y={195} textAnchor="middle" fontSize={15} fontWeight={900} fill="#fff" style={{ fontFamily: "var(--font-nunito), ui-rounded, system-ui, sans-serif", letterSpacing: "-0.02em" }}>
+          {packaging.badge.value}
+        </text>
+        <text x={148} y={205.5} textAnchor="middle" fontSize={5.6} fontWeight={700} letterSpacing={0.7} fill="#fff" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
+          {packaging.badge.label.toUpperCase()}
         </text>
 
         {/* Wordmark */}
@@ -257,8 +251,8 @@ export function BottleArt({
         </text>
         <path d="M37,245 C60,243 90,246 112,243" fill="none" stroke={theme.accent} strokeWidth={1.4} strokeLinecap="round" />
 
-        <text x={37} y={258} fontSize={7.4} fontWeight={600} fill="#080B32" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
-          Overnight Oats
+        <text x={37} y={258} fontSize={6.9} fontWeight={600} fill="#080B32" style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}>
+          {packaging.tagline}
         </text>
 
         {/* Flavour name */}
@@ -273,7 +267,7 @@ export function BottleArt({
 
         {/* Large line-art flavour motif */}
         <g opacity={0.95}>
-          <FlavourMotif kind={theme.topping} x={146} y={280} ink={theme.accent} scale={2.5} />
+          <FlavourMotif kind={theme.topping} x={147} y={285} ink={theme.accent} scale={2.4} />
         </g>
 
         <rect x={26} y={166} width={148} height={156} fill={`url(#curve-${uid})`} />
