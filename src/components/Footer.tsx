@@ -33,6 +33,7 @@ export function Footer() {
             <li><Link href="/our-story" className={linkCls}>Our Story</Link></li>
             <li><Link href="/blog" className={linkCls}>Blog</Link></li>
             <li><Link href="/faqs" className={linkCls}>FAQs</Link></li>
+            <li><Link href="/coming-soon" className={linkCls}>Coming Soon</Link></li>
             <li>
               {contact.email ? (
                 <a href={`mailto:${contact.email}`} className={linkCls}>Contact</a>

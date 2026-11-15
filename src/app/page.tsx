@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BrandStory } from "@/components/BrandStory";
+import { ComingSoon } from "@/components/ComingSoon";
 import { DiscoveryTrio } from "@/components/DiscoveryTrio";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Hero } from "@/components/Hero";
@@ -45,6 +46,7 @@ export default function HomePage() {
       <BrandStory />
       <ReviewSection />
       <JournalSection />
+      <ComingSoon />
       <FinalCTA />
     </>
   );

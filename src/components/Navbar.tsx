@@ -8,13 +8,14 @@ import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 
-const links = [
+const links: { href: string; label: string; highlight?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/our-science", label: "Our Science" },
   { href: "/our-story", label: "Our Story" },
   { href: "/blog", label: "Blog" },
   { href: "/faqs", label: "FAQs" },
+  { href: "/coming-soon", label: "Coming Soon", highlight: true },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -109,6 +110,7 @@ export function Navbar() {
                   )}
                 >
                   {l.label}
+                  {l.highlight ? <span className="brand-gradient ml-1.5 inline-block size-2 -translate-y-0.5 rounded-full" aria-hidden /> : null}
                 </Link>
               </li>
             );
@@ -147,6 +149,7 @@ export function Navbar() {
                     )}
                   >
                     {l.label}
+                    {l.highlight ? <span className="brand-gradient rounded-full px-2.5 py-0.5 font-sans text-xs font-bold text-white">New soon</span> : null}
                   </Link>
                 </li>
               );
