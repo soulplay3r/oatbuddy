@@ -64,7 +64,14 @@ export function ComingSoon({ showLink = true }: { showLink?: boolean }) {
             <h2 id="coming-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
               Breakfast was <span className="brand-gradient-text">just the beginning.</span>
             </h2>
-            <p className="mt-4 text-lg font-medium text-ink">New Mito essentials are in the lab. Here&apos;s a peek. No spoilers yet.</p>
+            <p className="mt-6 text-2xl font-bold leading-snug text-navy sm:text-3xl">
+              <span className="inline-block rounded-2xl bg-coral-soft px-4 py-2 ring-1 ring-coral/40">
+                New Mito essentials are in the lab.
+              </span>
+            </p>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-violet-soft px-4 py-1.5 text-base font-semibold text-violet-deep sm:text-lg">
+              Here&apos;s a peek. No spoilers yet.
+            </p>
           </div>
           {showLink ? (
             <Link href="/coming-soon" className="inline-flex h-11 items-center gap-2 rounded-full bg-navy px-5 font-semibold text-ivory hover:bg-navy-deep">
