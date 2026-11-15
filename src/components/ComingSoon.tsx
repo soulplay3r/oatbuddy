@@ -59,17 +59,15 @@ export function ComingSoon({ showLink = true }: { showLink?: boolean }) {
       <span className="brand-gradient absolute inset-x-0 top-0 h-1" aria-hidden />
       <div className="container-page relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <p className="eyebrow text-magenta-deep">What&apos;s next from Mito</p>
             <h2 id="coming-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
               Breakfast was <span className="brand-gradient-text">just the beginning.</span>
             </h2>
-            <p className="mt-6 text-2xl font-bold leading-snug text-navy sm:text-3xl">
-              <span className="inline-block rounded-2xl bg-coral-soft px-4 py-2 ring-1 ring-coral/40">
-                New Mito essentials are in the lab.
-              </span>
-            </p>
-            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-violet-soft px-4 py-1.5 text-base font-semibold text-violet-deep sm:text-lg">
+            <p className="mt-4 text-lg leading-relaxed text-ink">
+              <mark className="rounded-md bg-coral-soft box-decoration-clone px-1.5 py-0.5 font-bold text-navy">
+                New Mito essentials are getting ready in the lab.
+              </mark>{" "}
               Here&apos;s a peek. No spoilers yet.
             </p>
           </div>
