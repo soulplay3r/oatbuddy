@@ -12,20 +12,23 @@
 
 export const siteConfig = {
   /** Brand name shown in the logo, bottle labels, titles and footer. */
-  brandName: "BRAND NAME",
+  brandName: "Mito.living",
+
+  /** Wordmark parts: "Mito" + coral dot + "living". */
+  wordmark: { name: "Mito", suffix: "living" },
 
   /** Short line shown under the logo in the footer and in metadata. */
-  tagline: "Overnight oats for happier mornings.",
+  tagline: "Science-led wellness essentials designed to help you make more of every day.",
 
   /** Default meta description used when a page does not set its own. */
   description:
-    "Delicious overnight oats made for busy mornings, better routines and happier taste buds. Mango Mischief, Strawberry Love and Chocolate Brownie.",
+    "Mito.living makes science-led wellness essentials designed to help you make more of every day — starting with overnight oats in Mango Mischief, Strawberry Love and Chocolate Brownie.",
 
   /** Public URL of the site. Used for canonical and Open Graph URLs. */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
   /** Slim bar at the very top of every page. Set to null to hide it. */
-  announcement: "Your mornings just got better." as string | null,
+  announcement: "Science-led wellness essentials — starting with breakfast." as string | null,
 
   /** Currency used for every price on the site. */
   currency: { code: "INR", locale: "en-IN" },

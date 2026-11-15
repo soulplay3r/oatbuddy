@@ -21,10 +21,10 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
                 aria-expanded={isOpen}
                 aria-controls={`${item.id}-panel`}
                 onClick={() => setOpen(isOpen ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold text-forest transition-colors hover:bg-cream/70 sm:px-8 sm:text-xl"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold text-navy transition-colors hover:bg-ivory/70 sm:px-8 sm:text-xl"
               >
                 {item.question}
-                <span className={cn("grid size-9 shrink-0 place-items-center rounded-full bg-forest-soft transition-transform duration-200", isOpen && "rotate-45 bg-mango")}>
+                <span className={cn("grid size-9 shrink-0 place-items-center rounded-full bg-navy-soft transition-transform duration-200", isOpen && "rotate-45 bg-coral")}>
                   <Plus className="size-5" aria-hidden />
                 </span>
               </button>
@@ -38,7 +38,7 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
             >
               <p className="max-w-2xl text-ink/75">{item.answer}</p>
               {item.placeholder ? (
-                <p className="mt-3 inline-flex rounded-full bg-cream-deep px-3 py-1 text-xs font-semibold text-muted">
+                <p className="mt-3 inline-flex rounded-full bg-ivory-deep px-3 py-1 text-xs font-semibold text-muted">
                   To be confirmed{isDev ? " · DEV: edit in src/data/faqs.ts" : ""}
                 </p>
               ) : null}

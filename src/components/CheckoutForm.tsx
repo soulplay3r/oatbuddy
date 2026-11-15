@@ -101,7 +101,7 @@ export function CheckoutForm() {
   if (lines.length === 0 && status !== "done") {
     return (
       <div className="mx-auto max-w-lg rounded-[2.5rem] bg-white px-6 py-14 text-center ring-1 ring-line">
-        <h2 className="text-2xl font-bold text-forest">Your cart is empty</h2>
+        <h2 className="text-2xl font-bold text-navy">Your cart is empty</h2>
         <p className="mt-2 text-muted">Add some oats before heading to checkout.</p>
         <ButtonLink href="/shop" size="lg" className="mt-7">Shop Oats</ButtonLink>
       </div>
@@ -111,8 +111,8 @@ export function CheckoutForm() {
   if (status === "done") {
     return (
       <div className="mx-auto max-w-xl rounded-[2.5rem] bg-white px-6 py-12 text-center ring-1 ring-line sm:px-10" role="status">
-        <CheckCircle2 className="mx-auto size-12 text-forest" aria-hidden />
-        <h2 className="mt-4 text-3xl font-bold text-forest">Thanks, {details.name.split(" ")[0]}!</h2>
+        <CheckCircle2 className="mx-auto size-12 text-navy" aria-hidden />
+        <h2 className="mt-4 text-3xl font-bold text-navy">Thanks, {details.name.split(" ")[0]}!</h2>
         <p className="mt-3 text-muted">
           Your details look good. <strong className="text-ink">Online payment isn&apos;t enabled yet</strong>, so no order has been placed and nothing has been charged or sent anywhere. Your cart is saved for when ordering opens.
         </p>
@@ -124,8 +124,8 @@ export function CheckoutForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="grid items-start gap-8 lg:grid-cols-[1fr_26rem]">
       <div className="space-y-6">
-        <div className="flex gap-3 rounded-2xl bg-mango-soft p-4 text-sm text-ink ring-1 ring-mango">
-          <ShieldAlert className="mt-0.5 size-5 shrink-0 text-mango-deep" aria-hidden />
+        <div className="flex gap-3 rounded-2xl bg-coral-soft p-4 text-sm text-ink ring-1 ring-coral">
+          <ShieldAlert className="mt-0.5 size-5 shrink-0 text-coral-deep" aria-hidden />
           <p>
             <strong>Payments aren&apos;t enabled yet.</strong> This is a preview of checkout — submitting won&apos;t place an order, take payment or send your details anywhere.
           </p>
@@ -133,7 +133,7 @@ export function CheckoutForm() {
 
         <fieldset className="rounded-[2rem] bg-white p-6 ring-1 ring-line sm:p-8">
           <legend className="sr-only">Contact details</legend>
-          <h2 className="text-xl font-bold text-forest" aria-hidden>Contact details</h2>
+          <h2 className="text-xl font-bold text-navy" aria-hidden>Contact details</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <Field id="name" label="Full name" error={errors.name} className="sm:col-span-2">
               <input type="text" autoComplete="name" {...fieldProps("name")} />
@@ -149,7 +149,7 @@ export function CheckoutForm() {
 
         <fieldset className="rounded-[2rem] bg-white p-6 ring-1 ring-line sm:p-8">
           <legend className="sr-only">Delivery address</legend>
-          <h2 className="text-xl font-bold text-forest" aria-hidden>Delivery address</h2>
+          <h2 className="text-xl font-bold text-navy" aria-hidden>Delivery address</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <Field id="address" label="Address" error={errors.address} className="sm:col-span-2">
               <textarea rows={3} autoComplete="street-address" placeholder="House / flat no., building, street, area" {...fieldProps("address")} />
@@ -173,24 +173,24 @@ export function CheckoutForm() {
         </fieldset>
 
         <section className="rounded-[2rem] bg-white p-6 ring-1 ring-line sm:p-8" aria-labelledby="payment-title">
-          <h2 id="payment-title" className="flex items-center gap-2 text-xl font-bold text-forest">
+          <h2 id="payment-title" className="flex items-center gap-2 text-xl font-bold text-navy">
             <Lock className="size-5" aria-hidden />
             Payment
           </h2>
-          <div className="mt-4 rounded-2xl border-[1.5px] border-dashed border-line bg-cream/60 p-5 text-sm text-muted">
+          <div className="mt-4 rounded-2xl border-[1.5px] border-dashed border-line bg-ivory/60 p-5 text-sm text-muted">
             Secure online payment will appear here once it&apos;s set up. We never ask for card details on this page.
           </div>
         </section>
       </div>
 
       <aside aria-labelledby="checkout-summary" className="rounded-[2rem] bg-white p-6 ring-1 ring-line lg:sticky lg:top-28">
-        <h2 id="checkout-summary" className="text-lg font-bold text-forest">Order summary</h2>
+        <h2 id="checkout-summary" className="text-lg font-bold text-navy">Order summary</h2>
         <ul className="mt-4 divide-y divide-line">
           {lines.map((line) => (
             <li key={line.id} className="flex items-center gap-3 py-3">
               <div className="relative">
                 <LineThumb line={line} className="size-14" />
-                <span className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full bg-forest text-[11px] font-bold text-cream">{line.quantity}</span>
+                <span className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full bg-navy text-[11px] font-bold text-ivory">{line.quantity}</span>
               </div>
               <div className="min-w-0 flex-1">
                 <p className="font-semibold leading-tight">{line.name}</p>
@@ -209,7 +209,7 @@ export function CheckoutForm() {
           {status === "submitting" ? "Checking…" : "Review order"}
         </Button>
         <p className="mt-3 text-center text-xs text-muted">Payment integration is not enabled yet.</p>
-        <Link href="/cart" className="mt-4 flex items-center justify-center gap-1.5 text-sm font-semibold text-forest hover:underline">
+        <Link href="/cart" className="mt-4 flex items-center justify-center gap-1.5 text-sm font-semibold text-navy hover:underline">
           <ArrowLeft className="size-4" aria-hidden /> Back to cart
         </Link>
       </aside>

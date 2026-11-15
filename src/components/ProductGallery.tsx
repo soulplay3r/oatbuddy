@@ -45,7 +45,7 @@ export function ProductGallery({ product }: { product: Product }) {
               aria-pressed={i === index}
               className={cn(
                 "relative block aspect-square w-full overflow-hidden rounded-2xl ring-2 transition-[box-shadow,transform] hover:-translate-y-0.5",
-                i === index ? "ring-forest" : "ring-transparent hover:ring-line",
+                i === index ? "ring-navy" : "ring-transparent hover:ring-line",
               )}
               style={{ backgroundColor: product.theme.soft }}
             >

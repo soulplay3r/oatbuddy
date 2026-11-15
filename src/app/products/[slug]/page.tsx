@@ -11,6 +11,7 @@ import { ProductFacts } from "@/components/ProductFacts";
 import { ProductGallery } from "@/components/ProductGallery";
 import { PurchasePanel } from "@/components/PurchasePanel";
 import { TrioArt } from "@/components/art/TrioArt";
+import { EnergyGlow } from "@/components/brand/EnergyGlow";
 import { bundles, getBundle, getBundleProducts, getProduct, products, type Bundle, type Product } from "@/data/products";
 
 type Params = Promise<{ slug: string }>;
@@ -56,7 +57,7 @@ function ProductDetail({ product }: { product: Product }) {
             <span className="size-2.5 rounded-full" style={{ backgroundColor: product.theme.accent }} aria-hidden />
             {product.flavour} · Overnight oats
           </p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.02] text-forest sm:text-5xl lg:text-6xl">{product.name}</h1>
+          <h1 className="mt-4 text-4xl font-extrabold leading-[1.02] text-navy sm:text-5xl lg:text-6xl">{product.name}</h1>
           <p className="mt-4 text-xl font-medium text-ink/80">{product.shortDescription}</p>
           <p className="mt-4 text-lg text-muted">{product.description}</p>
 
@@ -70,7 +71,7 @@ function ProductDetail({ product }: { product: Product }) {
 
           <div className="mt-4 rounded-2xl bg-white p-4 text-sm text-muted ring-1 ring-line">
             Want to try every flavour?{" "}
-            <Link href="/products/discovery-trio" className="font-semibold text-forest underline underline-offset-4">
+            <Link href="/products/discovery-trio" className="font-semibold text-navy underline underline-offset-4">
               Get the Discovery Trio
             </Link>
           </div>
@@ -78,7 +79,7 @@ function ProductDetail({ product }: { product: Product }) {
       </section>
 
       <section className="container-page py-10 md:py-14" aria-labelledby="details-title">
-        <h2 id="details-title" className="text-3xl font-bold text-forest sm:text-4xl">The details</h2>
+        <h2 id="details-title" className="text-3xl font-bold text-navy sm:text-4xl">The details</h2>
         <p className="mt-2 text-muted">Everything you need to know about {product.name}.</p>
         <div className="mt-8">
           <ProductFacts product={product} />
@@ -86,7 +87,7 @@ function ProductDetail({ product }: { product: Product }) {
       </section>
 
       <section className="container-page py-10 md:py-14" aria-labelledby="more-title">
-        <h2 id="more-title" className="text-3xl font-bold text-forest sm:text-4xl">Try the other flavours</h2>
+        <h2 id="more-title" className="text-3xl font-bold text-navy sm:text-4xl">Try the other flavours</h2>
         <ul className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-2">
           {others.map((p) => (
             <li key={p.slug}>
@@ -113,16 +114,13 @@ function BundleDetail({ bundle }: { bundle: Bundle }) {
 
       <section className="container-page grid gap-10 py-8 md:py-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-forest">
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-navy">
+            <EnergyGlow />
             {bundle.image ? (
               <Image src={bundle.image} alt={bundle.imageAlt} fill priority sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             ) : (
               <>
-                <div className="absolute inset-x-0 top-0 grid h-[58%] grid-cols-3" aria-hidden>
-                  <div className="bg-mango" />
-                  <div className="bg-strawberry" />
-                  <div className="bg-cocoa" />
-                </div>
+                <span className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgb(116_55_232/0.5),transparent_68%)] blur-xl" aria-hidden />
                 <div role="img" aria-label={`${bundle.imageAlt} (concept illustration)`} className="absolute inset-x-[8%] bottom-[10%] top-[12%] flex items-end">
                   <TrioArt size="lg" className="w-full" />
                 </div>
@@ -135,12 +133,12 @@ function BundleDetail({ bundle }: { bundle: Bundle }) {
         </div>
 
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="inline-flex items-center gap-2 rounded-full bg-forest-soft px-3 py-1.5 text-sm font-semibold text-forest">Bundle · 3 bottles</p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.02] text-forest sm:text-5xl lg:text-6xl">{bundle.name}</h1>
+          <p className="inline-flex items-center gap-2 rounded-full bg-navy-soft px-3 py-1.5 text-sm font-semibold text-navy">Bundle · 3 bottles</p>
+          <h1 className="mt-4 text-4xl font-extrabold leading-[1.02] text-navy sm:text-5xl lg:text-6xl">{bundle.name}</h1>
           <p className="mt-4 text-xl font-medium text-ink/80">{bundle.shortDescription}</p>
           <p className="mt-4 text-lg text-muted">{bundle.description}</p>
 
-          <h2 className="mt-8 text-lg font-bold text-forest">What&apos;s inside</h2>
+          <h2 className="mt-8 text-lg font-bold text-navy">What&apos;s inside</h2>
           <ul className="mt-3 space-y-2">
             {contents.map(({ product, quantity }) => (
               <li key={product.slug}>
@@ -169,7 +167,7 @@ function BundleDetail({ bundle }: { bundle: Bundle }) {
       </section>
 
       <section className="container-page pb-16 pt-6 md:pb-24" aria-labelledby="flavours-title">
-        <h2 id="flavours-title" className="text-3xl font-bold text-forest sm:text-4xl">Meet the flavours</h2>
+        <h2 id="flavours-title" className="text-3xl font-bold text-navy sm:text-4xl">Meet the flavours</h2>
         <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {contents.map(({ product }) => (
             <li key={product.slug}>

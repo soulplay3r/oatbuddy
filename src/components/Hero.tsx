@@ -5,40 +5,47 @@ import { heroContent } from "@/data/content";
 import { products } from "@/data/products";
 import { siteConfig } from "@/data/site-config";
 import { ButtonLink } from "./Button";
-import { Topping } from "./art/BottleArt";
 import { TrioArt } from "./art/TrioArt";
+import { EnergyGlow, MoleculeField } from "./brand/EnergyGlow";
 
-function Sprinkle({ kind, className }: { kind: "mango" | "strawberry" | "chocolate"; className: string }) {
+function Headline() {
+  const { headline, headlineAccent } = heroContent;
+  const i = headlineAccent ? headline.lastIndexOf(headlineAccent) : -1;
+  if (i < 0) return <>{headline}</>;
   return (
-    <svg viewBox="-12 -12 24 24" className={className} aria-hidden>
-      <Topping kind={kind} x={0} y={0} />
-    </svg>
+    <>
+      {headline.slice(0, i)}
+      <span className="brand-gradient-text">{headlineAccent}</span>
+    </>
   );
 }
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="container-page grid items-center gap-10 pb-14 pt-8 md:pb-20 md:pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pb-24">
+    <section className="relative overflow-hidden bg-navy text-ivory">
+      <EnergyGlow />
+      <MoleculeField className="inset-x-0 bottom-0 h-1/2 w-full opacity-70" />
+
+      <div className="container-page relative grid items-center gap-10 pb-16 pt-10 md:pb-24 md:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         <div className="max-w-xl">
-          <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-forest ring-1 ring-line">
-            <span className="flex -space-x-1" aria-hidden>
-              <span className="size-3 rounded-full bg-mango ring-2 ring-white" />
-              <span className="size-3 rounded-full bg-strawberry ring-2 ring-white" />
-              <span className="size-3 rounded-full bg-cocoa ring-2 ring-white" />
-            </span>
+          <p className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 text-sm font-semibold text-ivory/90 ring-1 ring-white/15 backdrop-blur">
+            <span className="brand-gradient size-2.5 rounded-full" aria-hidden />
             {heroContent.eyebrow}
           </p>
-          <h1 className="mt-6 text-[2.75rem] font-extrabold leading-[0.98] text-forest sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
-            {heroContent.headline}
+          <h1 className="mt-6 text-[2.6rem] font-bold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem]">
+            <Headline />
           </h1>
-          <p className="mt-6 max-w-md text-lg text-muted sm:text-xl">{heroContent.body}</p>
+          <p className="mt-6 max-w-md text-lg text-ivory/75 sm:text-xl">{heroContent.body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={heroContent.primaryCta.href} size="lg">
+            <ButtonLink href={heroContent.primaryCta.href} size="lg" variant="light">
               {heroContent.primaryCta.label}
               <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
-            <ButtonLink href={heroContent.secondaryCta.href} size="lg" variant="secondary">
+            <ButtonLink
+              href={heroContent.secondaryCta.href}
+              size="lg"
+              variant="outlineLight"
+            >
               {heroContent.secondaryCta.label}
             </ButtonLink>
           </div>
@@ -47,8 +54,7 @@ export function Hero() {
               <li key={p.slug}>
                 <Link
                   href={`/products/${p.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
-                  style={{ backgroundColor: p.theme.soft }}
+                  className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3.5 py-2 text-sm font-semibold text-ivory ring-1 ring-white/12 transition-colors hover:bg-white/15"
                 >
                   <span className="size-2.5 rounded-full" style={{ backgroundColor: p.theme.accent }} aria-hidden />
                   {p.name}
@@ -59,7 +65,7 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative mx-auto aspect-[1/1] w-full max-w-[36rem] overflow-hidden rounded-[2.5rem] bg-cream-deep">
+          <div className="relative mx-auto aspect-square w-full max-w-[36rem]">
             {siteConfig.images.hero ? (
               <Image
                 src={siteConfig.images.hero}
@@ -67,33 +73,24 @@ export function Hero() {
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
+                className="rounded-[2.5rem] object-cover"
               />
             ) : (
               <>
-                <div className="absolute inset-0 grid grid-cols-3" aria-hidden>
-                  <div className="bg-mango" />
-                  <div className="bg-strawberry" />
-                  <div className="bg-cocoa" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-[22%] bg-cream-deep" aria-hidden />
-                <div className="absolute inset-x-0 bottom-[22%] h-3 bg-black/5" aria-hidden />
-                <Sprinkle kind="mango" className="absolute left-[8%] top-[10%] size-10 rotate-12" />
-                <Sprinkle kind="strawberry" className="absolute left-[44%] top-[6%] size-11 -rotate-12" />
-                <Sprinkle kind="chocolate" className="absolute right-[9%] top-[13%] size-10 rotate-6" />
+                <span className="absolute inset-[4%] rounded-full border border-white/10" aria-hidden />
+                <span className="absolute inset-[16%] rounded-full border border-white/10" aria-hidden />
+                <span className="absolute inset-[22%] rounded-full bg-[radial-gradient(circle,rgb(116_55_232/0.55),rgb(195_74_214/0.2)_45%,transparent_70%)] blur-xl" aria-hidden />
+                <span className="absolute inset-x-[12%] bottom-[10%] h-[5%] rounded-[100%] bg-black/40 blur-md" aria-hidden />
                 <div
                   role="img"
                   aria-label="Concept illustration of the Mango Mischief, Strawberry Love and Chocolate Brownie bottles"
-                  className="absolute inset-x-[6%] bottom-[9%] top-[18%] flex items-end"
+                  className="absolute inset-x-[8%] bottom-[11%] top-[14%] flex items-end"
                 >
                   <TrioArt size="lg" className="w-full" />
                 </div>
               </>
             )}
           </div>
-          <p className="absolute -bottom-3 right-4 rotate-[-4deg] rounded-full bg-forest px-4 py-2 font-display text-sm font-bold text-cream shadow-lg sm:right-8">
-            3 flavours. 1 simple bottle.
-          </p>
         </div>
       </div>
     </section>

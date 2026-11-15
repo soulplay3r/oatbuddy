@@ -1,29 +1,22 @@
 import { ArrowRight } from "lucide-react";
-import { products } from "@/data/products";
 import { ButtonLink } from "./Button";
-import { BottleArt } from "./art/BottleArt";
+import { MitoMark } from "./brand/MitoMark";
+import { MoleculeField } from "./brand/EnergyGlow";
 
 export function FinalCTA() {
-  const [mango, , chocolate] = products;
   return (
     <section className="container-page pb-16 md:pb-24">
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-mango px-6 py-14 text-center sm:px-12 md:py-20">
-        <BottleArt
-          theme={mango.theme}
-          productName={mango.name}
-          className="pointer-events-none absolute -bottom-16 -left-6 hidden h-72 w-auto -rotate-12 opacity-95 md:block"
-        />
-        <BottleArt
-          theme={chocolate.theme}
-          productName={chocolate.name}
-          className="pointer-events-none absolute -bottom-16 -right-6 hidden h-72 w-auto rotate-12 opacity-95 md:block"
-        />
+      <div className="relative overflow-hidden rounded-[2.5rem] bg-white px-6 py-14 text-center ring-1 ring-line sm:px-12 md:py-20">
+        <MoleculeField tone="dark" className="inset-0 h-full w-full opacity-60" />
+        <div className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-[radial-gradient(circle,rgb(255_120_62/0.28),transparent_65%)]" aria-hidden />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 size-72 rounded-full bg-[radial-gradient(circle,rgb(76_77_235/0.25),transparent_65%)]" aria-hidden />
         <div className="relative mx-auto max-w-2xl">
-          <h2 className="text-4xl font-extrabold leading-[1.02] text-forest sm:text-5xl md:text-6xl">
-            Make tomorrow morning delicious.
+          <MitoMark className="mx-auto size-14" />
+          <h2 className="mt-6 text-4xl font-bold leading-[1.05] text-navy sm:text-5xl md:text-6xl">
+            Make tomorrow morning <span className="brand-gradient-text">count.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-md text-lg text-ink/75">
-            Three flavours, one easy habit. Pick yours tonight.
+          <p className="mx-auto mt-5 max-w-md text-lg text-muted">
+            Three flavours. One simple habit. Find the one that fits your routine.
           </p>
           <ButtonLink href="/shop" size="lg" className="mt-8">
             Shop All Flavours

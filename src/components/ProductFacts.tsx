@@ -1,12 +1,12 @@
-import { AlertTriangle, ClipboardList, Leaf, Refrigerator, Soup } from "lucide-react";
+import { AlertTriangle, ClipboardList, FlaskConical, Refrigerator, Soup } from "lucide-react";
 import type { Product } from "@/data/products";
 import { PlaceholderNote } from "./PlaceholderNote";
 
-function FactCard({ icon: Icon, title, children }: { icon: typeof Leaf; title: string; children: React.ReactNode }) {
+function FactCard({ icon: Icon, title, children }: { icon: typeof FlaskConical; title: string; children: React.ReactNode }) {
   return (
     <section className="rounded-[1.75rem] bg-white p-6 ring-1 ring-line" aria-label={title}>
-      <h3 className="flex items-center gap-3 text-xl font-bold text-forest">
-        <span className="grid size-10 place-items-center rounded-xl bg-forest-soft">
+      <h3 className="flex items-center gap-3 text-xl font-bold text-navy">
+        <span className="grid size-10 place-items-center rounded-xl bg-navy-soft">
           <Icon className="size-5" aria-hidden />
         </span>
         {title}
@@ -23,7 +23,7 @@ export function ProductFacts({ product }: { product: Product }) {
   const f = product.facts;
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <FactCard icon={Leaf} title="Ingredients">
+      <FactCard icon={FlaskConical} title="Ingredients">
         {f.ingredients ? <p>{f.ingredients.join(", ")}.</p> : <PlaceholderNote devHint={hint("ingredients")}>Ingredient list to be confirmed. It will be published here once verified.</PlaceholderNote>}
       </FactCard>
 

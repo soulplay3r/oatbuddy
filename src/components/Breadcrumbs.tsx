@@ -9,7 +9,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
           <li key={item.label} className="flex items-center gap-1">
             {i > 0 ? <ChevronRight className="size-3.5" aria-hidden /> : null}
             {item.href ? (
-              <Link href={item.href} className="hover:text-forest hover:underline">{item.label}</Link>
+              <Link href={item.href} className="hover:text-navy hover:underline">{item.label}</Link>
             ) : (
               <span aria-current="page" className="font-medium text-ink">{item.label}</span>
             )}

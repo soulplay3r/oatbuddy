@@ -1,4 +1,4 @@
-# BRAND NAME — D2C Overnight Oats Store
+# Mito.living — D2C Overnight Oats Store
 
 A Next.js storefront for three overnight oats flavours (Mango Mischief, Strawberry Love and Chocolate Brownie) plus the Discovery Trio bundle.
 
@@ -17,7 +17,7 @@ npm run build && npm start   # production build
 
 | What | File |
 | --- | --- |
-| Brand name, tagline, announcement bar, contact, Instagram, shipping note, hero/trio photo paths | `src/data/site-config.ts` |
+| Brand name, wordmark, tagline, announcement bar, contact, Instagram, shipping note, hero/trio photo paths | `src/data/site-config.ts` |
 | Products: names, copy, **prices**, colours, images, ingredients, nutrition, allergens, preparation, storage, availability | `src/data/products.ts` |
 | Discovery Trio contents and **price** | `src/data/products.ts` (`bundles`) |
 | Homepage hero copy, benefit cards, Our Story copy, founder note | `src/data/content.ts` |

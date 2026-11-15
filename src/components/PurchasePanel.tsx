@@ -40,7 +40,7 @@ export function PurchasePanel({
         {added ? (
           <>
             Added to your cart.{" "}
-            <Link href="/cart" className="font-semibold text-forest underline underline-offset-4">
+            <Link href="/cart" className="font-semibold text-navy underline underline-offset-4">
               View cart
             </Link>
           </>

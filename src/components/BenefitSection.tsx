@@ -10,16 +10,16 @@ const icons: Record<(typeof benefits)[number]["icon"], LucideIcon> = {
 };
 
 const tints = [
-  { bg: "bg-mango-soft", icon: "bg-mango text-ink" },
-  { bg: "bg-strawberry-soft", icon: "bg-strawberry text-ink" },
-  { bg: "bg-cocoa-soft", icon: "bg-cocoa text-white" },
-  { bg: "bg-forest-soft", icon: "bg-forest text-cream" },
+  { bg: "bg-coral-soft", icon: "bg-coral text-ink" },
+  { bg: "bg-magenta-soft", icon: "bg-magenta text-white" },
+  { bg: "bg-violet-soft", icon: "bg-violet text-white" },
+  { bg: "bg-blue-soft", icon: "bg-navy text-ivory" },
 ];
 
 export function BenefitSection() {
   return (
     <section className="container-page py-16 md:py-24" aria-labelledby="benefits-title">
-      <SectionHeading id="benefits-title" eyebrow="Why you'll love it" title="Breakfast, sorted." />
+      <SectionHeading id="benefits-title" eyebrow="Why Mito" title="Designed for the way you live." />
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {benefits.map((b, i) => {
           const Icon = icons[b.icon];
@@ -29,7 +29,7 @@ export function BenefitSection() {
               <span className={`grid size-12 place-items-center rounded-2xl ${tint.icon}`}>
                 <Icon className="size-6" aria-hidden />
               </span>
-              <h3 className="mt-5 text-xl font-bold text-forest">{b.title}</h3>
+              <h3 className="mt-5 text-xl font-bold text-navy">{b.title}</h3>
               <p className="mt-2 text-ink/70">{b.body}</p>
             </li>
           );

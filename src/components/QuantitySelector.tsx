@@ -22,7 +22,7 @@ export function QuantitySelector({
   className?: string;
 }) {
   const btn = cn(
-    "grid place-items-center rounded-full text-forest transition-colors hover:bg-forest-soft disabled:opacity-35 disabled:hover:bg-transparent",
+    "grid place-items-center rounded-full text-navy transition-colors hover:bg-navy-soft disabled:opacity-35 disabled:hover:bg-transparent",
     size === "sm" ? "size-8" : "size-10",
   );
   return (

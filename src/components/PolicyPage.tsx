@@ -5,7 +5,7 @@ import { PlaceholderNote } from "./PlaceholderNote";
 export function PolicyPage({ title, children }: { title: string; children?: React.ReactNode }) {
   return (
     <div className="container-page max-w-3xl py-12 md:py-16">
-      <h1 className="text-4xl font-extrabold text-forest sm:text-5xl">{title}</h1>
+      <h1 className="text-4xl font-extrabold text-navy sm:text-5xl">{title}</h1>
       <div className="mt-8 space-y-4 text-lg text-ink/80">
         {children ?? (
           <PlaceholderNote devHint="replace this placeholder with reviewed policy text">

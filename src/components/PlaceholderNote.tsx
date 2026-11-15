@@ -15,7 +15,7 @@ export function PlaceholderNote({
   return (
     <div
       className={cn(
-        "flex gap-3 rounded-2xl border-[1.5px] border-dashed border-line bg-cream/60 p-4 text-sm text-muted",
+        "flex gap-3 rounded-2xl border-[1.5px] border-dashed border-line bg-ivory/60 p-4 text-sm text-muted",
         className,
       )}
     >

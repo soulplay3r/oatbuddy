@@ -2,26 +2,33 @@
 
 /* ───────────── Design tokens ───────────── */
 @theme {
-  --color-cream: #fff9f0;
-  --color-cream-deep: #f7eddc;
-  --color-forest: #244d3b;
-  --color-forest-deep: #183a2b;
-  --color-forest-soft: #dfe9e2;
-  --color-mango: #f5d66e;
-  --color-mango-soft: #fcf1c9;
-  --color-mango-deep: #7a5c00;
-  --color-strawberry: #f1b5c2;
-  --color-strawberry-soft: #fce6eb;
-  --color-strawberry-deep: #9c2f4c;
-  --color-cocoa: #98705b;
-  --color-cocoa-soft: #efe3da;
-  --color-cocoa-deep: #5a3b2c;
-  --color-ink: #252525;
-  --color-muted: #77736d;
-  --color-line: #ebe2d4;
+  /* Base — navy & ivory form the majority of the identity */
+  --color-navy: #080b32;
+  --color-navy-deep: #04061f;
+  --color-navy-soft: #e8e7f3;
+  --color-ivory: #f5f1eb;
+  --color-ivory-deep: #ebe4d9;
 
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  /* Accents — use sparingly */
+  --color-coral: #ff783e;
+  --color-coral-soft: #ffe8dc;
+  --color-coral-deep: #b2440f;
+  --color-violet: #7437e8;
+  --color-violet-soft: #ece4fc;
+  --color-violet-deep: #5524b8;
+  --color-magenta: #c34ad6;
+  --color-magenta-soft: #f7e5fa;
+  --color-magenta-deep: #8e2a9e;
+  --color-blue: #4c4deb;
+  --color-blue-soft: #e5e5fc;
+
+  --color-ink: #12143a;
+  --color-muted: #6b6a7b;
+  --color-line: #e3ddd2;
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-wordmark: var(--font-nunito), ui-rounded, system-ui, sans-serif;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
@@ -38,7 +45,7 @@
     }
   }
   body {
-    background: var(--color-cream);
+    background: var(--color-ivory);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -56,12 +63,12 @@
     text-wrap: pretty;
   }
   :focus-visible {
-    outline: 3px solid var(--color-forest);
+    outline: 3px solid var(--color-navy);
     outline-offset: 3px;
     border-radius: 6px;
   }
   ::selection {
-    background: var(--color-mango);
+    background: var(--color-violet-soft);
     color: var(--color-ink);
   }
   /* Anchored sections clear the sticky navbar. */
@@ -109,12 +116,23 @@
   }
   .input:focus {
     outline: none;
-    border-color: var(--color-forest);
-    box-shadow: 0 0 0 4px rgb(36 77 59 / 0.12);
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 4px rgb(116 55 232 / 0.16);
   }
   .input[aria-invalid="true"] {
     border-color: #c0392b;
   }
+}
+
+/* Signature energy gradient — a signature, not a background for everything. */
+.brand-gradient {
+  background-image: linear-gradient(115deg, #ff783e 0%, #c34ad6 40%, #7437e8 70%, #4c4deb 100%);
+}
+.brand-gradient-text {
+  background-image: linear-gradient(100deg, #ff783e 0%, #c34ad6 38%, #7437e8 68%, #4c4deb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Gentle "added" pop for the cart badge — skipped for reduced motion. */

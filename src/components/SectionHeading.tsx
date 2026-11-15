@@ -19,11 +19,11 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
-      {eyebrow ? <p className="eyebrow text-strawberry-deep">{eyebrow}</p> : null}
+      {eyebrow ? <p className="eyebrow text-magenta-deep">{eyebrow}</p> : null}
       <Tag
         id={id}
         className={cn(
-          "mt-3 font-bold text-forest",
+          "mt-3 font-bold text-navy",
           Tag === "h1" ? "text-4xl sm:text-5xl md:text-6xl" : "text-3xl sm:text-4xl md:text-5xl",
         )}
       >

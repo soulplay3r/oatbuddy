@@ -33,7 +33,7 @@ export function ProductCard({ product, headingLevel = "h3" }: { product: Product
         <p className="eyebrow" style={{ color: product.theme.deep }}>
           {product.flavour}
         </p>
-        <Heading className="mt-2 text-2xl font-bold text-forest">
+        <Heading className="mt-2 text-2xl font-bold text-navy">
           <Link href={href} className="hover:underline hover:decoration-2 hover:underline-offset-4">
             {product.name}
           </Link>
@@ -47,7 +47,7 @@ export function ProductCard({ product, headingLevel = "h3" }: { product: Product
           <Link
             href={href}
             className={cn(
-              "inline-flex h-11 items-center justify-center gap-1 rounded-full px-4 text-[0.95rem] font-semibold text-forest transition-colors hover:bg-forest-soft/60",
+              "inline-flex h-11 items-center justify-center gap-1 rounded-full px-4 text-[0.95rem] font-semibold text-navy transition-colors hover:bg-navy-soft/60",
             )}
             aria-label={`View product: ${product.name}`}
           >

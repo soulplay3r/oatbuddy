@@ -40,13 +40,13 @@ function CartLink() {
     <Link
       href="/cart"
       aria-label={label}
-      className="relative grid size-11 place-items-center rounded-full text-forest transition-colors hover:bg-forest-soft/70"
+      className="relative grid size-11 place-items-center rounded-full text-navy transition-colors hover:bg-navy-soft/70"
     >
       <ShoppingBag className="size-[22px]" aria-hidden />
       {hydrated && itemCount > 0 ? (
         <span
           className={cn(
-            "absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-strawberry-deep px-1 text-[11px] font-bold leading-none text-white ring-2 ring-cream",
+            "absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-magenta-deep px-1 text-[11px] font-bold leading-none text-white ring-2 ring-ivory",
             pop && "animate-badge-pop",
           )}
           aria-hidden
@@ -86,7 +86,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-cream/90 backdrop-blur-md transition-[border-color,box-shadow] duration-200",
+        "sticky top-0 z-40 border-b bg-ivory/90 backdrop-blur-md transition-[border-color,box-shadow] duration-200",
         scrolled ? "border-line shadow-[0_8px_24px_-18px_rgb(37_37_37/0.35)]" : "border-transparent",
       )}
     >
@@ -103,7 +103,7 @@ export function Navbar() {
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "rounded-full px-4 py-2 text-[0.95rem] font-semibold transition-colors",
-                    active ? "bg-forest-soft text-forest" : "text-ink/75 hover:bg-forest-soft/50 hover:text-forest",
+                    active ? "bg-navy-soft text-navy" : "text-ink/75 hover:bg-navy-soft/50 hover:text-navy",
                   )}
                 >
                   {l.label}
@@ -117,7 +117,7 @@ export function Navbar() {
           <CartLink />
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-full text-forest hover:bg-forest-soft/70 md:hidden"
+            className="grid size-11 place-items-center rounded-full text-navy hover:bg-navy-soft/70 md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -129,7 +129,7 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <div id="mobile-menu" className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-cream md:hidden">
+        <div id="mobile-menu" className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ivory md:hidden">
           <ul className="container-page flex flex-col gap-1 pt-4">
             {links.map((l) => {
               const active = isActive(pathname, l.href);
@@ -141,7 +141,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-center justify-between rounded-2xl px-4 py-4 font-display text-2xl font-bold",
-                      active ? "bg-forest-soft text-forest" : "text-ink hover:bg-forest-soft/50",
+                      active ? "bg-navy-soft text-navy" : "text-ink hover:bg-navy-soft/50",
                     )}
                   >
                     {l.label}
@@ -149,10 +149,8 @@ export function Navbar() {
                 </li>
               );
             })}
-            <li className="mt-4 grid grid-cols-3 gap-2 px-1" aria-hidden>
-              <span className="h-2 rounded-full bg-mango" />
-              <span className="h-2 rounded-full bg-strawberry" />
-              <span className="h-2 rounded-full bg-cocoa" />
+            <li className="mt-4 px-1" aria-hidden>
+              <span className="brand-gradient block h-1.5 rounded-full" />
             </li>
           </ul>
         </div>

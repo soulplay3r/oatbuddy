@@ -20,7 +20,7 @@ export function OrderTotals({ showTotal = false }: { showTotal?: boolean }) {
       </div>
       {showTotal ? (
         <div className="flex justify-between gap-4 border-t border-line pt-3 text-lg">
-          <dt className="font-bold text-forest">Total</dt>
+          <dt className="font-bold text-navy">Total</dt>
           <dd className="font-display font-bold">{sub ? `${sub} + shipping` : "To be confirmed"}</dd>
         </div>
       ) : null}

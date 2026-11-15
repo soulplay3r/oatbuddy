@@ -15,9 +15,9 @@ const OAT_LIGHT = "#F1E2C2";
 const OAT_BASE = "#E6CF9F";
 const OAT_FLAKE = "#D6B680";
 const OAT_FLAKE_LIGHT = "#F8EEDA";
-const FOREST = "#244D3B";
-const CREAM = "#FFF9F0";
-const INK = "#252525";
+const NAVY = "#080B32";
+const CREAM = "#F5F1EB";
+const INK = "#080B32";
 
 /** Small deterministic PRNG so illustrations render identically on server & client. */
 function seeded(seed: string) {
@@ -249,8 +249,8 @@ export function BottleArt({
           fontSize={9}
           fontWeight={700}
           letterSpacing={2.4}
-          fill={ink === CREAM ? CREAM : FOREST}
-          style={{ fontFamily: "var(--font-figtree), system-ui, sans-serif" }}
+          fill={ink === CREAM ? CREAM : NAVY}
+          style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}
         >
           {siteConfig.brandName.toUpperCase()}
         </text>
@@ -262,7 +262,7 @@ export function BottleArt({
           fontSize={fit(line1)}
           fontWeight={800}
           fill={ink}
-          style={{ fontFamily: "var(--font-bricolage), system-ui, sans-serif", letterSpacing: "-0.02em" }}
+          style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}
         >
           {line1}
         </text>
@@ -274,12 +274,12 @@ export function BottleArt({
             fontSize={fit(line2)}
             fontWeight={800}
             fill={ink}
-            style={{ fontFamily: "var(--font-bricolage), system-ui, sans-serif", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "var(--font-sora), system-ui, sans-serif", letterSpacing: "-0.02em" }}
           >
             {line2}
           </text>
         ) : null}
-        <rect x={56} y={290} width={88} height={17} rx={8.5} fill={ink === CREAM ? CREAM : FOREST} />
+        <rect x={56} y={290} width={88} height={17} rx={8.5} fill={ink === CREAM ? CREAM : NAVY} />
         <text
           x={100}
           y={301.5}
@@ -287,8 +287,8 @@ export function BottleArt({
           fontSize={7}
           fontWeight={700}
           letterSpacing={1.4}
-          fill={ink === CREAM ? FOREST : CREAM}
-          style={{ fontFamily: "var(--font-figtree), system-ui, sans-serif" }}
+          fill={ink === CREAM ? NAVY : CREAM}
+          style={{ fontFamily: "var(--font-manrope), system-ui, sans-serif" }}
         >
           OVERNIGHT OATS
         </text>

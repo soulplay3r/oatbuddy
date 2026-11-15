@@ -13,7 +13,7 @@ export function LineThumb({ line, className = "size-20 sm:size-24" }: { line: Re
     );
   }
   return (
-    <div className={`relative flex shrink-0 items-end justify-center overflow-hidden rounded-2xl bg-forest-soft px-1 pb-2 ${className}`} aria-hidden>
+    <div className={`relative flex shrink-0 items-end justify-center overflow-hidden rounded-2xl bg-navy-soft px-1 pb-2 ${className}`} aria-hidden>
       {line.contents.map(({ product }, i) => (
         <BottleArt key={product.slug} theme={product.theme} productName={product.name} shadow={false} className={`h-[78%] w-auto ${i > 0 ? "-ml-[14%]" : ""}`} />
       ))}
