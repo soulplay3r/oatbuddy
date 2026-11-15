@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ───────────── Design tokens ───────────── */
+@theme {
+  --color-cream: #fff9f0;
+  --color-cream-deep: #f7eddc;
+  --color-forest: #244d3b;
+  --color-forest-deep: #183a2b;
+  --color-forest-soft: #dfe9e2;
+  --color-mango: #f5d66e;
+  --color-mango-soft: #fcf1c9;
+  --color-mango-deep: #7a5c00;
+  --color-strawberry: #f1b5c2;
+  --color-strawberry-soft: #fce6eb;
+  --color-strawberry-deep: #9c2f4c;
+  --color-cocoa: #98705b;
+  --color-cocoa-soft: #efe3da;
+  --color-cocoa-deep: #5a3b2c;
+  --color-ink: #252525;
+  --color-muted: #77736d;
+  --color-line: #ebe2d4;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-forest);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-mango);
+    color: var(--color-ink);
+  }
+  /* Anchored sections clear the sticky navbar. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .input {
+    width: 100%;
+    border-radius: 0.875rem;
+    border: 1.5px solid var(--color-line);
+    background: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .input::placeholder {
+    color: #a7a29a;
+  }
+  .input:hover {
+    border-color: #d8ccb9;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-forest);
+    box-shadow: 0 0 0 4px rgb(36 77 59 / 0.12);
+  }
+  .input[aria-invalid="true"] {
+    border-color: #c0392b;
+  }
+}
+
+/* Gentle "added" pop for the cart badge — skipped for reduced motion. */
+@keyframes badge-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.animate-badge-pop {
+  animation: badge-pop 350ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-badge-pop {
+    animation: none;
+  }
+}
