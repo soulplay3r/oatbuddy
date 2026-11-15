@@ -135,6 +135,25 @@
   color: transparent;
 }
 
+/* Morning sun rays behind the hero bottles. */
+.sun-rays {
+  border-radius: 9999px;
+  background: repeating-conic-gradient(from 0deg, rgb(255 205 140 / 0.22) 0deg 4deg, transparent 4deg 15deg);
+  -webkit-mask-image: radial-gradient(circle, #000 12%, rgb(0 0 0 / 0.5) 30%, transparent 58%);
+  mask-image: radial-gradient(circle, #000 12%, rgb(0 0 0 / 0.5) 30%, transparent 58%);
+}
+@keyframes sun-rays-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.animate-sun-rays {
+  animation: sun-rays-spin 120s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-sun-rays {
+    animation: none;
+  }
+}
+
 /* Gentle "added" pop for the cart badge — skipped for reduced motion. */
 @keyframes badge-pop {
   0% { transform: scale(1); }

@@ -85,17 +85,22 @@ export function Hero() {
               />
             ) : (
               <>
+                {/* Morning sunrise behind the bottles */}
                 <span className="absolute inset-[4%] rounded-full border border-white/10" aria-hidden />
-                <span className="absolute inset-[16%] rounded-full border border-white/10" aria-hidden />
-                <span className="absolute inset-[22%] rounded-full bg-[radial-gradient(circle,rgb(116_55_232/0.55),rgb(195_74_214/0.2)_45%,transparent_70%)] blur-xl" aria-hidden />
+                <span className="absolute inset-[10%] rounded-full bg-[conic-gradient(from_200deg,rgb(255_120_62/0.3),rgb(195_74_214/0.3),rgb(116_55_232/0.3),rgb(76_77_235/0.3),rgb(255_120_62/0.3))] blur-3xl" aria-hidden />
+                <span className="sun-rays animate-sun-rays absolute left-1/2 top-[40%] aspect-square w-[150%] -translate-x-1/2 -translate-y-1/2" aria-hidden />
+                <span className="absolute left-1/2 top-[40%] aspect-square w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(255_196_120/0.55),rgb(255_120_62/0.28)_38%,rgb(195_74_214/0.12)_58%,transparent_70%)] blur-2xl" aria-hidden />
+                <span className="absolute left-1/2 top-[40%] aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,#FFF6E6_0%,#FFD9A0_35%,#FFB06A_62%,rgb(255_120_62/0.0)_72%)] shadow-[0_0_120px_40px_rgb(255_160_90/0.45)]" aria-hidden />
+                <span className="absolute inset-x-[2%] bottom-[12%] h-[3px] rounded-full bg-[linear-gradient(90deg,transparent,rgb(255_200_140/0.9),transparent)] blur-[1px]" aria-hidden />
+                <span className="absolute inset-x-[8%] bottom-[8%] h-[12%] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgb(255_170_100/0.35),transparent_70%)] blur-md" aria-hidden />
                 <span className="absolute inset-x-[12%] bottom-[10%] h-[5%] rounded-[100%] bg-black/40 blur-md" aria-hidden />
-                <span className="absolute inset-[10%] rounded-full bg-[conic-gradient(from_200deg,rgb(255_120_62/0.35),rgb(195_74_214/0.35),rgb(116_55_232/0.35),rgb(76_77_235/0.35),rgb(255_120_62/0.35))] blur-3xl" aria-hidden />
                 <div
                   role="img"
-                  aria-label="Concept illustration of the Mango Mischief, Strawberry Love and Chocolate Brownie bottles"
+                  aria-label="Concept illustration of the Mango Mischief, Strawberry Love and Chocolate Brownie bottles in morning sunlight"
                   className="absolute inset-x-[8%] bottom-[11%] top-[14%] flex items-end"
                 >
-                  <TrioArt size="lg" className="w-full" />
+                  {/* warm sunlight rim-lighting the bottles from behind */}
+                  <TrioArt size="lg" className="w-full [filter:drop-shadow(0_-6px_18px_rgb(255_190_120/0.55))_drop-shadow(0_0_40px_rgb(255_150_90/0.25))]" />
                 </div>
               </>
             )}
