@@ -7,7 +7,7 @@ import { products } from "@/data/products";
 
 export const metadata: Metadata = pageMetadata({
   title: "Shop Overnight Oats",
-  description: "Find your flavour: Mango Mischief, Strawberry Love, Chocolate Brownie — or try all three with the Discovery Trio.",
+  description: "Find your flavour: Mango Mischief, Strawberry Love, Chocolate Brownie, or try all three with the Discovery Trio.",
   path: "/shop",
 });
 
@@ -19,7 +19,7 @@ export default function ShopPage() {
           as="h1"
           eyebrow="Shop"
           title="Find your flavour."
-          body="Three overnight oats, each in its own grab-and-go bottle. Fruity, berry or chocolatey — or all three. Your morning, your call."
+          body="Three overnight oats, each in its own grab-and-go bottle. Fruity, berry or chocolatey, or all three. Your morning, your call."
         />
       </section>
 

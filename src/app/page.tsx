@@ -15,7 +15,7 @@ import { products } from "@/data/products";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: { absolute: `${siteConfig.brandName} — ${siteConfig.tagline}` },
+  title: { absolute: `${siteConfig.brandName} | ${siteConfig.tagline}` },
   description: siteConfig.description,
   alternates: { canonical: "/" },
 };
@@ -31,7 +31,7 @@ export default function HomePage() {
           id="flavours-title"
           eyebrow="Featured products"
           title="Start with breakfast."
-          body="Instant & overnight oats in three flavours — one simple bottle, made for real mornings."
+          body="Instant & overnight oats in three flavours. One simple bottle, made for real mornings."
         />
         <div className="mt-12">
           <ProductGrid products={products} />

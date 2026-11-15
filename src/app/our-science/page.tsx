@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const principles = [
-  { icon: Search, title: "Start from the evidence", body: "Every product starts with what published nutrition research actually supports — not trends or headlines." },
+  { icon: Search, title: "Start from the evidence", body: "Every product starts with what published nutrition research actually supports, not trends or headlines." },
   { icon: Sparkles, title: "Design for real life", body: "Science only helps if you use it. We design for taste, convenience and routines people can keep." },
   { icon: Scale, title: "Say only what we can support", body: "No miracle transformations, instant energy or guaranteed results. If we can't back a claim, we don't make it." },
   { icon: BookOpen, title: "Show our working", body: "Ingredients, nutrition and the references behind our claims are published, so you can check them yourself." },

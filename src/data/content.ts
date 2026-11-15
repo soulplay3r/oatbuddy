@@ -9,7 +9,7 @@ export const heroContent = {
   headline: "Make more of every morning.",
   /** Part of the headline shown in the signature gradient. */
   headlineAccent: "every morning.",
-  body: "Overnight oats, thoughtfully designed for real routines. Three flavours, one simple bottle — breakfast that keeps up with you.",
+  body: "Overnight oats, thoughtfully designed for real routines. Three flavours, one simple bottle. Breakfast that keeps up with you.",
   primaryCta: { label: "Shop Now", href: "/shop" },
   secondaryCta: { label: "Explore Flavours", href: "/#flavours" },
 };
@@ -31,7 +31,7 @@ export const whyMito = [
   {
     icon: "eye",
     title: "Radically transparent",
-    body: "Full ingredients, nutrition and the evidence behind every claim — published on each product page.",
+    body: "Full ingredients, nutrition and the evidence behind every claim, published on each product page.",
     link: { label: "Read the FAQs", href: "/faqs" },
   },
 ] as const;
@@ -40,7 +40,7 @@ export const storyContent = {
   intro: {
     eyebrow: "Our Story",
     headline: "Wellness should fit the way you live.",
-    body: "Mornings are busy. Between alarms, commutes and everything else, breakfast is often the first thing to go. Mito.living exists to make the everyday essentials easier to get right — starting with the first meal of the day.",
+    body: "Mornings are busy. Between alarms, commutes and everything else, breakfast is often the first thing to go. Mito.living exists to make the everyday essentials easier to get right, starting with the first meal of the day.",
   },
   sections: [
     {
@@ -49,15 +49,15 @@ export const storyContent = {
     },
     {
       title: "Guided by science, designed for life.",
-      body: "We start from what's known about everyday nutrition, then make it practical. No jargon, no miracle claims — just thoughtful products you'll want to use every day.",
+      body: "We start from what's known about everyday nutrition, then make it practical. No jargon, no miracle claims. Just thoughtful products you'll want to use every day.",
     },
     {
       title: "Starting with three flavours.",
-      body: "Mango Mischief, Strawberry Love and Chocolate Brownie — three overnight oats, one simple bottle. It's where our story begins.",
+      body: "Mango Mischief, Strawberry Love and Chocolate Brownie: three overnight oats, one simple bottle. It's where our story begins.",
     },
     {
       title: "This is just the beginning.",
-      body: "Over time, Mito.living will grow into a broader range of everyday wellness essentials — each one designed to help you make more of every day.",
+      body: "Over time, Mito.living will grow into a broader range of everyday wellness essentials, each one designed to help you make more of every day.",
     },
   ],
 };

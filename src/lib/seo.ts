@@ -27,7 +27,7 @@ export function pageMetadata({
       title: `${title} | ${siteConfig.brandName}`,
       description,
       url: path,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.brandName} — Overnight Oats` }],
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.brandName} | Overnight Oats` }],
     },
     ...(noIndex ? { robots: { index: false } } : {}),
   };

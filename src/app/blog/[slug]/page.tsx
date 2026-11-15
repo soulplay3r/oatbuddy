@@ -45,7 +45,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
         </p>
         {isDev && !article.reviewedBy ? (
           <p className="mt-4 rounded-xl border border-dashed border-amber-500/70 bg-amber-50 px-3 py-2 font-mono text-xs text-amber-800">
-            DEV: draft — have this article reviewed, then set reviewedBy and publishedAt in src/data/articles.ts
+            DEV: draft. Have this article reviewed, then set reviewedBy and publishedAt in src/data/articles.ts
           </p>
         ) : null}
 

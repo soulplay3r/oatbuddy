@@ -86,7 +86,7 @@ export default function OurStoryPage() {
           <EnergyGlow variant="bottom" />
           <div className="relative">
             <h2 className="text-3xl font-bold sm:text-4xl">Start with a flavour.</h2>
-            <p className="mt-3 max-w-md text-ivory/80">Mango, strawberry or chocolate — which will your mornings be?</p>
+            <p className="mt-3 max-w-md text-ivory/80">Mango, strawberry or chocolate. Which will your mornings be?</p>
             <ButtonLink href="/shop" variant="light" size="lg" className="mt-6">
               Shop Oats <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>

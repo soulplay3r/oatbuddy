@@ -19,7 +19,7 @@ export function BrandStory() {
           <h2 id="story-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">Built on evidence. Designed for everyday life.</h2>
           <p className="mt-5 text-lg text-muted">
             Mito.living makes science-led wellness essentials designed to help you make more of every day. We start from what
-            the research supports, then turn it into products that fit real routines — beginning with breakfast.
+            the research supports, then turn it into products that fit real routines, beginning with breakfast.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/our-science">

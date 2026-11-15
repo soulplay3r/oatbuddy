@@ -108,7 +108,7 @@ export const products: Product[] = [
     flavour: "Mango",
     shortDescription: "A sunny, fruity start to your day.",
     description:
-      "Bright, fruity and a little bit cheeky. Mango Mischief brings sunny mango to a simple, grab-and-go bottle of overnight oats — an easy upgrade to an ordinary morning.",
+      "Bright, fruity and a little bit cheeky. Mango Mischief brings sunny mango to a simple, grab-and-go bottle of overnight oats. An easy upgrade to an ordinary morning.",
     price: null,
     availability: "available",
     theme: {
@@ -127,7 +127,7 @@ export const products: Product[] = [
     flavour: "Strawberry",
     shortDescription: "A sweet, berry-filled breakfast moment.",
     description:
-      "Sweet strawberry and creamy oats in one considered bottle. Made for mornings that deserve a little more care — wherever your day takes you.",
+      "Sweet strawberry and creamy oats in one considered bottle. Made for mornings that deserve a little more care, wherever your day takes you.",
     price: null,
     availability: "available",
     theme: {
@@ -146,7 +146,7 @@ export const products: Product[] = [
     flavour: "Chocolate",
     shortDescription: "A chocolatey treat for your morning routine.",
     description:
-      "Rich, cocoa-forward and comforting. Chocolate Brownie is for the mornings when breakfast should feel like a treat — without the fuss.",
+      "Rich, cocoa-forward and comforting. Chocolate Brownie is for the mornings when breakfast should feel like a treat, without the fuss.",
     price: null,
     availability: "available",
     theme: {
@@ -188,7 +188,7 @@ export const bundles: Bundle[] = [
     name: "Discovery Trio",
     shortDescription: "Can't pick a favourite? Try all three.",
     description:
-      "One of each flavour — Mango Mischief, Strawberry Love and Chocolate Brownie. The easiest way to find your favourite (or decide you love them all).",
+      "One of each flavour: Mango Mischief, Strawberry Love and Chocolate Brownie. The easiest way to find your favourite (or decide you love them all).",
     price: null,
     availability: "available",
     items: [

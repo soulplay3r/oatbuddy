@@ -38,14 +38,14 @@ export function Footer() {
               {contact.email ? (
                 <a href={`mailto:${contact.email}`} className={linkCls}>Contact</a>
               ) : (
-                <span className="text-ivory/55">Contact — coming soon</span>
+                <span className="text-ivory/55">Contact (coming soon)</span>
               )}
             </li>
             <li>
               {social.instagram ? (
                 <a href={social.instagram} className={linkCls} target="_blank" rel="noopener noreferrer">Instagram</a>
               ) : (
-                <span className="text-ivory/55">Instagram — coming soon</span>
+                <span className="text-ivory/55">Instagram (coming soon)</span>
               )}
             </li>
           </ul>

@@ -5,7 +5,7 @@ import { articles } from "@/data/articles";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog — Wellness Resources",
+  title: "Blog: Wellness Resources",
   description: "Clear, practical articles on nutrition basics, building routines and reading food labels.",
   path: "/blog",
 });
@@ -17,7 +17,7 @@ export default function BlogPage() {
         as="h1"
         eyebrow="Blog"
         title="Wellness resources."
-        body="Clear, practical reads on nutrition, routines and reading the label — no jargon, no hype."
+        body="Clear, practical reads on nutrition, routines and reading the label. No jargon, no hype."
       />
       <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((a) => (

@@ -36,7 +36,7 @@ export const articles: Article[] = [
     reviewedBy: null,
     accent: "coral",
     body: [
-      { type: "p", text: "Oats come in a few common forms, and most of the difference between them is about how they've been processed — which changes how quickly they soften." },
+      { type: "p", text: "Oats come in a few common forms, and most of the difference between them is about how they've been processed, which changes how quickly they soften." },
       { type: "h2", text: "How oats are processed" },
       { type: "ul", items: [
         "Rolled oats are steamed and flattened into flakes.",
@@ -66,7 +66,7 @@ export const articles: Article[] = [
       { type: "h2", text: "Decide the night before" },
       { type: "p", text: "Pick tomorrow's breakfast before you go to bed. If it needs prep, do it then. A decision made at night is one you don't have to make half-awake." },
       { type: "h2", text: "Anchor it to something you already do" },
-      { type: "p", text: "Attach breakfast to an existing habit — after you put the kettle on, or before you check your phone. An anchor makes a new habit easier to remember." },
+      { type: "p", text: "Attach breakfast to an existing habit: after you put the kettle on, or before you check your phone. An anchor makes a new habit easier to remember." },
       { type: "h2", text: "Keep it simple and repeatable" },
       { type: "ul", items: [
         "Have two or three go-to options rather than a new plan every day.",
@@ -92,11 +92,11 @@ export const articles: Article[] = [
       { type: "h2", text: "Per serving vs per 100 g" },
       { type: "p", text: "Most labels show values per 100 g and per serving. Per 100 g is best for comparing products; per serving tells you what you're actually eating. Check what the brand counts as one serving." },
       { type: "h2", text: "As sold vs as prepared" },
-      { type: "p", text: "Some products are meant to be mixed with milk or water. Their labels may show values for the dry product, for the prepared product, or both. If a number includes the milk you add, the label should say so — and the total will depend on the milk you use." },
+      { type: "p", text: "Some products are meant to be mixed with milk or water. Their labels may show values for the dry product, for the prepared product, or both. If a number includes the milk you add, the label should say so, and the total will depend on the milk you use." },
       { type: "h2", text: "The ingredient list" },
       { type: "p", text: "In India, ingredients are listed in descending order by weight, so the first few ingredients make up most of the product." },
       { type: "h2", text: "Allergens" },
-      { type: "p", text: "Look for the allergen declaration, usually near the ingredient list. If you have an allergy, check it every time — recipes can change." },
+      { type: "p", text: "Look for the allergen declaration, usually near the ingredient list. If you have an allergy, check it every time, because recipes can change." },
       { type: "h2", text: "Claims on the front" },
       { type: "p", text: "Front-of-pack claims are a summary. The nutrition table and ingredient list on the back are where you can check them." },
     ],

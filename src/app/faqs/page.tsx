@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
 export default function FAQsPage() {
   return (
     <div className="container-page py-12 md:py-16">
-      <SectionHeading as="h1" eyebrow="FAQs" title="Questions? We've got answers." body="Safety, usage, ingredients and shipping — everything you might want to know before your first bottle." />
+      <SectionHeading as="h1" eyebrow="FAQs" title="Questions? We've got answers." body="Safety, usage, ingredients and shipping: everything you might want to know before your first bottle." />
       <div className="mx-auto mt-12 max-w-3xl">
         <nav aria-label="FAQ categories" className="mb-8 flex flex-wrap gap-2">
           {faqCategories.map((c) => (

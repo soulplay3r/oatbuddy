@@ -72,7 +72,7 @@ export function ReviewSection() {
                   <Play className="size-7 translate-x-0.5" aria-hidden />
                 </span>
                 <p className="relative font-display text-lg font-semibold">Video story coming soon</p>
-                <p className="relative max-w-[14rem] text-sm text-ivory/70">Real customers, sharing their routines — once our first bottles are out.</p>
+                <p className="relative max-w-[14rem] text-sm text-ivory/70">Real customers, sharing their routines, once our first bottles are out.</p>
               </li>
             ))}
       </ul>

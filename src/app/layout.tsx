@@ -30,7 +30,7 @@ const wordmark = Nunito({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.brandName} — ${siteConfig.tagline}`,
+    default: `${siteConfig.brandName} | ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.brandName}`,
   },
   description: siteConfig.description,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.brandName,
-    title: `${siteConfig.brandName} — Overnight Oats`,
+    title: `${siteConfig.brandName} | Overnight Oats`,
     description: siteConfig.description,
     locale: "en_IN",
   },

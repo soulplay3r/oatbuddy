@@ -13,7 +13,7 @@ export function IngredientSpotlight() {
           <h2 id="ingredients-title" className="mt-3 text-3xl font-bold sm:text-4xl md:text-5xl">
             Know what&apos;s <span className="brand-gradient-text">in the bottle.</span>
           </h2>
-          <p className="mt-4 text-lg text-ivory/70">Short, factual profiles of the ingredients we use — what they are, and why they&apos;re there.</p>
+          <p className="mt-4 text-lg text-ivory/70">Short, factual profiles of the ingredients we use: what they are, and why they&apos;re there.</p>
         </div>
         <ul className="mt-12 grid gap-4 md:grid-cols-3">
           {ingredientSpotlight.map((ing, i) => (

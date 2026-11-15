@@ -22,7 +22,7 @@ export const faqs: FAQ[] = [
     category: "Usage",
     question: "What are overnight oats?",
     answer:
-      "Overnight oats are oats that soften by soaking — usually in milk, yoghurt or a plant-based alternative — for a few hours instead of being cooked. The result is a creamy, spoonable breakfast.",
+      "Overnight oats are oats that soften by soaking (usually in milk, yoghurt or a plant-based alternative) for a few hours instead of being cooked. The result is a creamy, spoonable breakfast.",
   },
   {
     id: "instant-vs-overnight",
@@ -104,7 +104,7 @@ export const faqs: FAQ[] = [
     category: "Shipping & orders",
     question: "How can I place an order?",
     answer:
-      "Pick your flavours on the Shop page, add them to your cart and head to checkout. Online payments are not switched on yet — we'll update this answer as soon as ordering opens.",
+      "Pick your flavours on the Shop page, add them to your cart and head to checkout. Online payments are not switched on yet. We'll update this answer as soon as ordering opens.",
   },
   {
     id: "delivery",

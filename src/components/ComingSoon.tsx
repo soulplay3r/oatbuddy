@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Lock, Sparkles } from "lucide-react";
 import { upcomingDrops, type UpcomingDrop } from "@/data/upcoming";
-import { EnergyGlow, MoleculeField } from "./brand/EnergyGlow";
 
 function MysteryShape({ shape, glow }: { shape: UpcomingDrop["shape"]; glow: UpcomingDrop["glow"] }) {
   const id = `g-${shape}`;
@@ -29,7 +28,7 @@ function MysteryShape({ shape, glow }: { shape: UpcomingDrop["shape"]; glow: Upc
 
 export function DropCard({ d }: { d: UpcomingDrop }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-[2rem] bg-white/6 ring-1 ring-white/12 backdrop-blur">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-navy shadow-[0_24px_50px_-28px_rgb(8_11_50/0.6)]">
       <div className="relative grid aspect-[4/3] place-items-center overflow-hidden">
         <span
           className="absolute inset-0 opacity-70 transition-opacity duration-300 group-hover:opacity-100"
@@ -39,15 +38,15 @@ export function DropCard({ d }: { d: UpcomingDrop }) {
         <div className={`relative h-[70%] transition-[filter] duration-300 ${d.revealed ? "" : "blur-[6px] group-hover:blur-[3px]"}`}>
           <MysteryShape shape={d.shape} glow={d.glow} />
         </div>
-        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ivory ring-1 ring-white/20">
+        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-navy">
           {d.revealed ? <Sparkles className="size-3.5" aria-hidden /> : <Lock className="size-3.5" aria-hidden />}
           {d.drop}
         </span>
         <span className="absolute right-4 top-4 rounded-full bg-coral px-3 py-1 text-xs font-bold text-navy">Coming soon</span>
       </div>
-      <div className="flex flex-1 flex-col p-6 text-ivory">
+      <div className="flex flex-1 flex-col border-t border-white/10 bg-navy-deep p-6 text-white">
         <h3 className="text-2xl font-bold">{d.revealed && d.name ? d.name : d.hint}</h3>
-        <p className="mt-2 text-ivory/70">{d.revealed && d.description ? d.description : d.teaser}</p>
+        <p className="mt-2 text-base leading-relaxed text-white/90">{d.revealed && d.description ? d.description : d.teaser}</p>
       </div>
     </article>
   );
@@ -56,20 +55,19 @@ export function DropCard({ d }: { d: UpcomingDrop }) {
 /** Homepage teaser for upcoming Mito products. */
 export function ComingSoon({ showLink = true }: { showLink?: boolean }) {
   return (
-    <section id="coming-soon" className="relative overflow-hidden bg-navy py-16 text-ivory md:py-24" aria-labelledby="coming-title">
-      <EnergyGlow />
-      <MoleculeField className="inset-0 h-full w-full opacity-40" />
+    <section id="coming-soon" className="relative overflow-hidden bg-white py-16 md:py-24" aria-labelledby="coming-title">
+      <span className="brand-gradient absolute inset-x-0 top-0 h-1" aria-hidden />
       <div className="container-page relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <p className="eyebrow text-coral">What&apos;s next from Mito</p>
-            <h2 id="coming-title" className="mt-3 text-3xl font-bold sm:text-4xl md:text-5xl">
+            <p className="eyebrow text-magenta-deep">What&apos;s next from Mito</p>
+            <h2 id="coming-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl md:text-5xl">
               Breakfast was <span className="brand-gradient-text">just the beginning.</span>
             </h2>
-            <p className="mt-4 text-lg text-ivory/70">New Mito essentials are in the lab. Here&apos;s a peek — no spoilers yet.</p>
+            <p className="mt-4 text-lg font-medium text-ink">New Mito essentials are in the lab. Here&apos;s a peek. No spoilers yet.</p>
           </div>
           {showLink ? (
-            <Link href="/coming-soon" className="inline-flex h-11 items-center gap-2 rounded-full px-5 font-semibold text-ivory ring-2 ring-inset ring-white/25 hover:bg-white/10">
+            <Link href="/coming-soon" className="inline-flex h-11 items-center gap-2 rounded-full bg-navy px-5 font-semibold text-ivory hover:bg-navy-deep">
               See what&apos;s coming <ArrowRight className="size-4" aria-hidden />
             </Link>
           ) : null}

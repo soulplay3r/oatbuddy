@@ -127,7 +127,7 @@ export function CheckoutForm() {
         <div className="flex gap-3 rounded-2xl bg-coral-soft p-4 text-sm text-ink ring-1 ring-coral">
           <ShieldAlert className="mt-0.5 size-5 shrink-0 text-coral-deep" aria-hidden />
           <p>
-            <strong>Payments aren&apos;t enabled yet.</strong> This is a preview of checkout — submitting won&apos;t place an order, take payment or send your details anywhere.
+            <strong>Payments aren&apos;t enabled yet.</strong> This is a preview of checkout. Submitting won&apos;t place an order, take payment or send your details anywhere.
           </p>
         </div>
 

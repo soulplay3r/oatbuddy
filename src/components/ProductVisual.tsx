@@ -57,7 +57,7 @@ export function ProductVisual({
       return (
         <div
           role="img"
-          aria-label={`${image.alt} — photo coming soon`}
+          aria-label={`${image.alt}, photo coming soon`}
           className={cn("flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center", className)}
         >
           <span className="grid size-14 place-items-center rounded-full bg-white/70" style={{ color: product.theme.deep }}>

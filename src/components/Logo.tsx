@@ -21,7 +21,7 @@ export function Wordmark({ tone = "dark", className }: { tone?: "dark" | "light"
 
 export function Logo({ className, tone = "dark", showMark = true }: { className?: string; tone?: "dark" | "light"; showMark?: boolean }) {
   return (
-    <Link href="/" className={cn("group inline-flex items-center gap-2", className)} aria-label={`${siteConfig.brandName} — home`}>
+    <Link href="/" className={cn("group inline-flex items-center gap-2", className)} aria-label={`${siteConfig.brandName} home`}>
       {showMark ? <MitoMark className="size-8 shrink-0 transition-transform duration-300 group-hover:-rotate-6" /> : null}
       <Wordmark tone={tone} className="text-[0.95rem] sm:text-base" />
     </Link>
