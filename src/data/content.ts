@@ -5,35 +5,34 @@
  */
 
 export const heroContent = {
-  eyebrow: "Overnight oats · 3 flavours",
+  eyebrow: "Instant & overnight oats · 3 flavours",
   headline: "Make more of every morning.",
   /** Part of the headline shown in the signature gradient. */
   headlineAccent: "every morning.",
   body: "Overnight oats, thoughtfully designed for real routines. Three flavours, one simple bottle — breakfast that keeps up with you.",
-  primaryCta: { label: "Shop Oats", href: "/shop" },
+  primaryCta: { label: "Shop Now", href: "/shop" },
   secondaryCta: { label: "Explore Flavours", href: "/#flavours" },
 };
 
-export const benefits = [
+/** "Why Mito" — science, quality and transparency. */
+export const whyMito = [
   {
-    icon: "sunrise",
-    title: "Breakfast, simplified",
-    body: "No stove, no planning, no pile of pans. One bottle, one spoon, and you're set.",
+    icon: "flask",
+    title: "Science-led",
+    body: "We start from published nutrition research, then design for real routines. No fads, no miracle claims.",
+    link: { label: "Our Science", href: "/our-science" },
   },
   {
-    icon: "sparkles",
-    title: "Flavour comes first",
-    body: "Mango, strawberry and chocolate. Good habits stick when you actually enjoy them.",
+    icon: "award",
+    title: "Quality, considered",
+    body: "Every ingredient is chosen with a reason. If we can't explain why it's in the bottle, it isn't.",
+    link: { label: "See the products", href: "/shop" },
   },
   {
-    icon: "clock",
-    title: "Built for real routines",
-    body: "A single-serve bottle that fits your bag, your desk and your schedule.",
-  },
-  {
-    icon: "smile",
-    title: "Small upgrades, every day",
-    body: "No grand promises — just a better start, repeated. That's how routines change.",
+    icon: "eye",
+    title: "Radically transparent",
+    body: "Full ingredients, nutrition and the evidence behind every claim — published on each product page.",
+    link: { label: "Read the FAQs", href: "/faqs" },
   },
 ] as const;
 

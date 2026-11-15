@@ -1,4 +1,4 @@
-import { AlertTriangle, ClipboardList, FlaskConical, Refrigerator, Soup } from "lucide-react";
+import { AlertTriangle, BookOpen, ClipboardList, FlaskConical, Package, Refrigerator, Soup, Sparkles } from "lucide-react";
 import type { Product } from "@/data/products";
 import { PlaceholderNote } from "./PlaceholderNote";
 
@@ -18,13 +18,57 @@ function FactCard({ icon: Icon, title, children }: { icon: typeof FlaskConical; 
 
 const hint = (field: string) => `fill facts.${field} in src/data/products.ts`;
 
-/** Ingredients, nutrition, allergens, preparation and storage — placeholders until verified. */
+/**
+ * Ingredients, benefits, usage and evidence first; then nutrition, allergens,
+ * storage and pack size. Placeholders until verified.
+ */
 export function ProductFacts({ product }: { product: Product }) {
   const f = product.facts;
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <FactCard icon={FlaskConical} title="Ingredients">
         {f.ingredients ? <p>{f.ingredients.join(", ")}.</p> : <PlaceholderNote devHint={hint("ingredients")}>Ingredient list to be confirmed. It will be published here once verified.</PlaceholderNote>}
+      </FactCard>
+
+      <FactCard icon={Sparkles} title="Benefits">
+        {f.benefits ? (
+          <ul className="list-disc space-y-1.5 pl-5 marker:text-violet">
+            {f.benefits.map((b) => <li key={b}>{b}</li>)}
+          </ul>
+        ) : (
+          <PlaceholderNote devHint={hint("benefits")}>Benefits will be listed once they are substantiated by evidence.</PlaceholderNote>
+        )}
+      </FactCard>
+
+      <FactCard icon={Soup} title="Usage">
+        {f.preparation ? (
+          <ol className="list-decimal space-y-1.5 pl-5">
+            {f.preparation.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+        ) : (
+          <PlaceholderNote devHint={hint("preparation")}>Instant and overnight preparation instructions to be confirmed.</PlaceholderNote>
+        )}
+      </FactCard>
+
+      <FactCard icon={BookOpen} title="Evidence">
+        {f.evidence ? (
+          <ul className="space-y-3">
+            {f.evidence.map((e) => (
+              <li key={e.claim}>
+                <p className="font-semibold text-navy">{e.claim}</p>
+                <p className="text-sm text-muted">
+                  {e.url ? (
+                    <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-navy">{e.source}</a>
+                  ) : (
+                    e.source
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <PlaceholderNote devHint={hint("evidence")}>References supporting this product&apos;s claims will be published here.</PlaceholderNote>
+        )}
       </FactCard>
 
       <FactCard icon={ClipboardList} title="Nutritional information">
@@ -56,16 +100,6 @@ export function ProductFacts({ product }: { product: Product }) {
         {f.allergens ? <p>{f.allergens}</p> : <PlaceholderNote devHint={hint("allergens")}>Allergen information to be confirmed. Please check the label before eating.</PlaceholderNote>}
       </FactCard>
 
-      <FactCard icon={Soup} title="Preparation">
-        {f.preparation ? (
-          <ol className="list-decimal space-y-1.5 pl-5">
-            {f.preparation.map((step) => <li key={step}>{step}</li>)}
-          </ol>
-        ) : (
-          <PlaceholderNote devHint={hint("preparation")}>Preparation instructions to be confirmed.</PlaceholderNote>
-        )}
-      </FactCard>
-
       <FactCard icon={Refrigerator} title="Storage">
         {f.storage || f.shelfLife ? (
           <div className="space-y-1.5">
@@ -77,7 +111,7 @@ export function ProductFacts({ product }: { product: Product }) {
         )}
       </FactCard>
 
-      <FactCard icon={ClipboardList} title="Pack size">
+      <FactCard icon={Package} title="Pack size">
         {f.netQuantity ? <p>{f.netQuantity}</p> : <PlaceholderNote devHint={hint("netQuantity")}>Net quantity to be confirmed.</PlaceholderNote>}
       </FactCard>
     </div>

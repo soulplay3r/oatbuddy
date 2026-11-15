@@ -11,7 +11,9 @@ import { Logo } from "./Logo";
 const links = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/our-science", label: "Our Science" },
   { href: "/our-story", label: "Our Story" },
+  { href: "/blog", label: "Blog" },
   { href: "/faqs", label: "FAQs" },
 ];
 
@@ -93,7 +95,7 @@ export function Navbar() {
       <nav className="container-page flex h-16 items-center justify-between gap-4 md:h-[4.5rem]" aria-label="Main">
         <Logo />
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {links.map((l) => {
             const active = isActive(pathname, l.href);
             return (
@@ -102,7 +104,7 @@ export function Navbar() {
                   href={l.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "rounded-full px-4 py-2 text-[0.95rem] font-semibold transition-colors",
+                    "rounded-full px-3.5 py-2 text-[0.95rem] font-semibold transition-colors",
                     active ? "bg-navy-soft text-navy" : "text-ink/75 hover:bg-navy-soft/50 hover:text-navy",
                   )}
                 >
@@ -117,7 +119,7 @@ export function Navbar() {
           <CartLink />
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-full text-navy hover:bg-navy-soft/70 md:hidden"
+            className="grid size-11 place-items-center rounded-full text-navy hover:bg-navy-soft/70 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -129,7 +131,7 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <div id="mobile-menu" className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ivory md:hidden">
+        <div id="mobile-menu" className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ivory lg:hidden">
           <ul className="container-page flex flex-col gap-1 pt-4">
             {links.map((l) => {
               const active = isActive(pathname, l.href);

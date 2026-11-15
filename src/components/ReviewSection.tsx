@@ -1,48 +1,76 @@
-import { Quote } from "lucide-react";
+import { BadgeCheck, Play, Quote } from "lucide-react";
 import { getProduct } from "@/data/products";
-import { reviews } from "@/data/reviews";
+import { reviews, videoTestimonials } from "@/data/reviews";
 import { SectionHeading } from "./SectionHeading";
 
-/** Shows genuine reviews from src/data/reviews.ts, or a friendly placeholder while there are none. */
+/** Verified reviews and video testimonials from src/data/reviews.ts, with placeholders while empty. */
 export function ReviewSection() {
+  const hasAny = reviews.length > 0 || videoTestimonials.length > 0;
   return (
     <section className="container-page py-16 md:py-24" aria-labelledby="reviews-title">
-      {reviews.length === 0 ? (
-        <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2.5rem] bg-white px-6 py-14 text-center ring-1 ring-line sm:px-12">
-          <span className="absolute -left-10 -top-10 size-36 rounded-full bg-coral-soft" aria-hidden />
-          <span className="absolute -bottom-12 -right-8 size-40 rounded-full bg-magenta-soft" aria-hidden />
-          <div className="relative">
-            <Quote className="mx-auto size-10 text-magenta-deep" aria-hidden />
-            <p className="eyebrow mt-4 text-muted">Breakfast stories</p>
-            <h2 id="reviews-title" className="mt-3 text-3xl font-bold text-navy sm:text-4xl">
-              Your breakfast story could be here.
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-muted">
-              We&apos;re just getting started. Once our first bottles reach real breakfast tables, genuine reviews from our customers will appear right here.
-            </p>
-          </div>
-        </div>
-      ) : (
-        <>
-          <SectionHeading id="reviews-title" eyebrow="Breakfast stories" title="What people are saying" />
-          <ul className="mt-12 grid gap-5 md:grid-cols-3">
-            {reviews.map((r) => {
-              const product = r.productSlug ? getProduct(r.productSlug) : undefined;
-              return (
-                <li key={r.id} className="flex flex-col rounded-[1.75rem] bg-white p-6 ring-1 ring-line">
-                  {r.rating ? <p className="text-sm font-semibold text-navy">Rated {r.rating} out of 5</p> : null}
-                  <blockquote className="mt-3 flex-1 text-lg text-ink">&ldquo;{r.quote}&rdquo;</blockquote>
-                  <p className="mt-5 font-semibold text-navy">
-                    {r.name}
-                    {r.location ? <span className="font-normal text-muted"> · {r.location}</span> : null}
+      <SectionHeading
+        id="reviews-title"
+        eyebrow="Customer stories"
+        title={hasAny ? "Real people, real routines." : "Your breakfast story could be here."}
+        body={hasAny ? "Reviews and videos from verified customers." : "We're just getting started. Genuine reviews and videos from verified customers will appear here."}
+      />
+
+      {reviews.length > 0 ? (
+        <ul className="mt-12 grid gap-5 md:grid-cols-3">
+          {reviews.map((r) => {
+            const product = r.productSlug ? getProduct(r.productSlug) : undefined;
+            return (
+              <li key={r.id} className="flex flex-col rounded-[1.75rem] bg-white p-6 ring-1 ring-line">
+                <div className="flex items-center justify-between gap-2">
+                  {r.verified ? (
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-violet-deep">
+                      <BadgeCheck className="size-4" aria-hidden /> Verified buyer
+                    </span>
+                  ) : <span />}
+                  {r.rating ? <span className="text-sm font-semibold text-navy">{r.rating}/5</span> : null}
+                </div>
+                <blockquote className="mt-3 flex-1 text-lg text-ink">&ldquo;{r.quote}&rdquo;</blockquote>
+                <p className="mt-5 font-semibold text-navy">
+                  {r.name}
+                  {r.location ? <span className="font-normal text-muted"> · {r.location}</span> : null}
+                </p>
+                {product ? <p className="text-sm text-muted">on {product.name}</p> : null}
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+
+      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Video testimonials">
+        {videoTestimonials.length > 0
+          ? videoTestimonials.map((v) => (
+              <li key={v.id} className="overflow-hidden rounded-[1.75rem] bg-navy ring-1 ring-line">
+                <video controls preload="none" poster={v.poster} className="aspect-[4/5] w-full object-cover">
+                  <source src={v.src} type="video/mp4" />
+                </video>
+                <div className="p-5 text-ivory">
+                  <p className="font-semibold">{v.title}</p>
+                  <p className="mt-1 flex items-center gap-1.5 text-sm text-ivory/70">
+                    {v.name}
+                    {v.verified ? <><BadgeCheck className="size-4 text-coral" aria-hidden /> Verified buyer</> : null}
                   </p>
-                  {product ? <p className="text-sm text-muted">on {product.name}</p> : null}
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      )}
+                </div>
+              </li>
+            ))
+          : [0, 1, 2].map((i) => (
+              <li
+                key={i}
+                className="relative flex aspect-[4/5] flex-col items-center justify-center gap-3 overflow-hidden rounded-[1.75rem] bg-white p-6 text-center ring-1 ring-line"
+              >
+                {i === 0 ? <Quote className="absolute left-6 top-6 size-8 text-magenta-soft" aria-hidden /> : null}
+                <span className="grid size-14 place-items-center rounded-full bg-navy-soft text-navy">
+                  <Play className="size-6 translate-x-0.5" aria-hidden />
+                </span>
+                <p className="font-display text-lg font-semibold text-navy">Video story coming soon</p>
+                <p className="max-w-[14rem] text-sm text-muted">Real customers, sharing their routines — once our first bottles are out.</p>
+              </li>
+            ))}
+      </ul>
     </section>
   );
 }

@@ -29,7 +29,9 @@ export function Footer() {
         <nav aria-label="Company" className="md:col-span-2">
           <h2 className="eyebrow text-coral">Brand</h2>
           <ul className="mt-4 space-y-2.5">
+            <li><Link href="/our-science" className={linkCls}>Our Science</Link></li>
             <li><Link href="/our-story" className={linkCls}>Our Story</Link></li>
+            <li><Link href="/blog" className={linkCls}>Blog</Link></li>
             <li><Link href="/faqs" className={linkCls}>FAQs</Link></li>
             <li>
               {contact.email ? (

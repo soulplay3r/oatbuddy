@@ -6,15 +6,15 @@ import type { FAQ } from "@/data/faqs";
 import { isDev } from "@/data/site-config";
 import { cn } from "@/lib/utils";
 
-export function FAQAccordion({ items }: { items: FAQ[] }) {
-  const [open, setOpen] = useState<string | null>(items[0]?.id ?? null);
+export function FAQAccordion({ items, openFirst = false }: { items: FAQ[]; openFirst?: boolean }) {
+  const [open, setOpen] = useState<string | null>(openFirst ? (items[0]?.id ?? null) : null);
   return (
     <ul className="divide-y divide-line overflow-hidden rounded-[2rem] bg-white ring-1 ring-line">
       {items.map((item) => {
         const isOpen = open === item.id;
         return (
           <li key={item.id} id={item.id}>
-            <h3>
+            <h3 className="m-0">
               <button
                 type="button"
                 id={`${item.id}-trigger`}

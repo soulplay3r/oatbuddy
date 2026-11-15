@@ -40,8 +40,20 @@ export interface NutritionRow {
   per100g?: string;
 }
 
+export interface EvidenceItem {
+  /** What the evidence supports, in plain language. */
+  claim: string;
+  /** Citation, e.g. journal article or regulatory reference. */
+  source: string;
+  url?: string;
+}
+
 export interface ProductFacts {
   ingredients: string[] | null;
+  /** Benefits you can substantiate. Keep null until verified. */
+  benefits: string[] | null;
+  /** References supporting each claim. Keep null until compiled. */
+  evidence: EvidenceItem[] | null;
   nutrition: NutritionRow[] | null;
   /** E.g. "Contains: oats (gluten), milk." */
   allergens: string | null;
@@ -70,6 +82,8 @@ export interface Product {
 
 const unknownFacts: ProductFacts = {
   ingredients: null,
+  benefits: null,
+  evidence: null,
   nutrition: null,
   allergens: null,
   preparation: null,

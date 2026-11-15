@@ -20,9 +20,13 @@ npm run build && npm start   # production build
 | Brand name, wordmark, tagline, announcement bar, contact, Instagram, shipping note, hero/trio photo paths | `src/data/site-config.ts` |
 | Products: names, copy, **prices**, colours, images, ingredients, nutrition, allergens, preparation, storage, availability | `src/data/products.ts` |
 | Discovery Trio contents and **price** | `src/data/products.ts` (`bundles`) |
-| Homepage hero copy, benefit cards, Our Story copy, founder note | `src/data/content.ts` |
-| FAQs | `src/data/faqs.ts` |
-| Customer reviews (genuine reviews only) | `src/data/reviews.ts` |
+| Homepage hero copy, Why Mito cards, Our Story copy, founder note | `src/data/content.ts` |
+| FAQs (grouped: Usage, Ingredients, Safety, Shipping & orders) | `src/data/faqs.ts` |
+| Customer reviews and video testimonials (verified customers only) | `src/data/reviews.ts` |
+| Founders, advisors and credentials (Our Story) | `src/data/team.ts` |
+| Ingredient spotlight (homepage) | `src/data/ingredients.ts` |
+| Blog articles | `src/data/articles.ts` |
+| Bottle label text (tagline, protein badge) | `src/data/site-config.ts` (`packaging`) |
 | Colours and fonts | `src/app/globals.css` (`@theme`) and `src/app/layout.tsx` |
 | Payment gateway integration point | `src/lib/checkout.ts` |
 

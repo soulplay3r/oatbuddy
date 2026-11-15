@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { BenefitSection } from "@/components/BenefitSection";
+import { BrandStory } from "@/components/BrandStory";
 import { DiscoveryTrio } from "@/components/DiscoveryTrio";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Hero } from "@/components/Hero";
+import { IngredientSpotlight } from "@/components/IngredientSpotlight";
+import { JournalSection } from "@/components/JournalSection";
 import { ProductGrid } from "@/components/ProductGrid";
 import { ReviewSection } from "@/components/ReviewSection";
 import { SectionHeading } from "@/components/SectionHeading";
+import { WhyMito } from "@/components/WhyMito";
 import { products } from "@/data/products";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: { absolute: `${siteConfig.brandName} — Overnight Oats for Better Mornings` },
+  title: { absolute: `${siteConfig.brandName} — ${siteConfig.tagline}` },
   description: siteConfig.description,
   alternates: { canonical: "/" },
 };
@@ -23,21 +26,23 @@ export default function HomePage() {
       <section id="flavours" className="container-page py-16 md:py-24" aria-labelledby="flavours-title">
         <SectionHeading
           id="flavours-title"
-          eyebrow="Shop by flavour"
-          title="Pick your morning mood."
-          body="Three flavours. Each one made to make you look forward to breakfast."
+          eyebrow="Featured products"
+          title="Start with breakfast."
+          body="Instant & overnight oats in three flavours — one simple bottle, made for real mornings."
         />
         <div className="mt-12">
           <ProductGrid products={products} />
         </div>
+        <div className="mt-6">
+          <DiscoveryTrio />
+        </div>
       </section>
 
-      <section id="discovery-trio" className="container-page" aria-label="Discovery Trio bundle">
-        <DiscoveryTrio />
-      </section>
-
-      <BenefitSection />
+      <WhyMito />
+      <IngredientSpotlight />
+      <BrandStory />
       <ReviewSection />
+      <JournalSection />
       <FinalCTA />
     </>
   );
